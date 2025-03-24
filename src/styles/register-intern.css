@@ -1,0 +1,211 @@
+/* Estilo base para o formulário */
+.register_intern {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    flex-direction: column; /* Organiza os elementos em uma coluna vertical */
+    width: 100%; /* Ocupa 100% da largura disponível */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px */
+    background-color: var(--background); /* Define a cor de fundo usando a variável --background */
+    color: var(--white); /* Define a cor do texto usando a variável --white */
+    border-radius: 10px; /* Arredonda as bordas do formulário */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil ao formulário */
+    margin-bottom: 20px; /* Adiciona uma margem inferior de 20px para desktop */
+}
+
+/* Estilo para o cabeçalho do formulário */
+header h2 {
+    font-size: 24px; /* Define o tamanho da fonte */
+    margin-bottom: 20px; /* Adiciona uma margem inferior de 20px */
+    color: var(--white); /* Define a cor do texto usando a variável --white */
+}
+
+/* Estilo para os campos do formulário */
+.form-style {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    flex-direction: column; /* Organiza os elementos em uma coluna vertical */
+    gap: 15px; /* Adiciona um espaçamento de 15px entre os elementos */
+    padding: 20px;
+}
+
+/* Estilo para os rótulos (labels) dos campos */
+.form-style label {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    flex-direction: column; /* Organiza os elementos em uma coluna vertical */
+    gap: 5px; /* Adiciona um espaçamento de 5px entre os elementos */
+    font-size: 14px; /* Define o tamanho da fonte */
+    color: var(--white); /* Define a cor do texto usando a variável --white */
+}
+
+/* Estilo para os inputs do formulário */
+.form-style input {
+    padding: 10px; /* Adiciona um espaçamento interno de 10px */
+    border: 1px solid var(--white); /* Define uma borda de 1px sólida com a cor da variável --white */
+    border-radius: 5px; /* Arredonda as bordas do input */
+    background-color: white; /* Define o fundo como transparente */
+    color: #000; /* Define a cor do texto usando a variável --white */
+    outline: none; /* Remove o contorno ao focar no input */
+    transition: border-color 0.3s ease; /* Adiciona uma transição suave na cor da borda */
+}
+
+/* Estilo para o input quando está em foco */
+.form-style input:focus {
+    border-color: rgb(104, 104, 250); /* Muda a cor da borda ao focar no input */
+}
+
+/* Estilo específico para campos de data e tempo */
+.form-style input[type="date"],
+.form-style input[type="time"] {
+    padding: 10px; /* Aumenta o padding para facilitar o clique */
+    height: 40px; /* Define uma altura fixa */
+    font-size: 14px; /* Aumenta o tamanho da fonte */
+    width: 100%; /* Ocupa 100% da largura */
+    position: relative;
+    cursor: pointer; /* Muda o cursor para pointer */
+    z-index: 999;
+}
+
+/* Estilo para o ícone de calendário e relógio */
+.form-style input[type="date"]::-webkit-calendar-picker-indicator,
+.form-style input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Inverte a cor do ícone para branco */
+    cursor: pointer; /* Muda o cursor para pointer */
+    padding-left: 100%; /* Aumenta o espaço clicável */
+    position: absolute;
+    z-index: 998;
+}
+
+/* Estilo para o botão de submit */
+.submit-button {
+    padding: 10px 20px; /* Adiciona um espaçamento interno */
+    background-color: var(---black-blue); /* Define a cor de fundo usando a variável ---black-blue */
+    color: var(--white); /* Define a cor do texto usando a variável --white */
+    border: none; /* Remove a borda */
+    border-radius: 5px; /* Arredonda as bordas */
+    cursor: pointer; /* Muda o cursor para pointer */
+    transition: background-color 0.3s ease; /* Adiciona uma transição suave na cor de fundo */
+}
+
+/* Efeito de hover no botão de submit */
+.submit-button:hover {
+    background-color: rgb(4, 4, 49); /* Muda a cor de fundo ao passar o mouse */
+}
+
+/* Estilo para os grupos de campos (.wrap) */
+.wrap {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    justify-content: space-between; /* Distribui o espaço entre os elementos */
+    gap: 20px; /* Adiciona um espaçamento de 20px entre os elementos */
+}
+
+/* Estilo para os rótulos dentro de .wrap */
+.wrap label {
+    width: 48%; /* Define a largura dos rótulos para evitar sobreposição */
+}
+
+/* Estilo para o campo de seleção (select) */
+.form-style select {
+    padding: 10px; /* Adiciona um espaçamento interno */
+    border: 1px solid var(--white); /* Define uma borda de 1px sólida com a cor da variável --white */
+    border-radius: 5px; /* Arredonda as bordas */
+    background-color: white; /* Define o fundo como transparente */
+    color: #000; /* Define a cor do texto usando a variável --white */
+    font-size: 14px; /* Define o tamanho da fonte */
+    cursor: pointer; /* Muda o cursor para pointer */
+    outline: none; /* Remove o contorno ao focar no campo */
+    appearance: none; /* Remove o estilo padrão do navegador */
+    -webkit-appearance: none; /* Remove o estilo padrão no Safari */
+    -moz-appearance: none; /* Remove o estilo padrão no Firefox */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e"); /* Ícone de seta personalizado */
+    background-repeat: no-repeat; /* Evita que o ícone se repita */
+    background-position: right 10px center; /* Posiciona o ícone à direita */
+    background-size: 12px; /* Define o tamanho do ícone */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /* Adiciona transições suaves */
+}
+
+/* Estilo para o campo de seleção com ID #gender-style */
+#gender-style {
+    width: 50%; /* Define a largura do campo de seleção */
+}
+
+/* Efeito de hover no campo de seleção */
+.form-style select:hover {
+    border-color: rgb(104, 104, 250); /* Muda a cor da borda ao passar o mouse */
+}
+
+/* Efeito de foco no campo de seleção */
+.form-style select:focus {
+    border-color: rgb(104, 104, 250); /* Muda a cor da borda ao focar no campo */
+    background-color: rgba(255, 255, 255, 0.1); /* Adiciona um fundo semi-transparente */
+}
+
+/* Estilo para as opções do campo de seleção */
+.form-style select option {
+    background-color: var(--background); /* Define a cor de fundo usando a variável --background */
+    color: var(--white); /* Define a cor do texto usando a variável --white */
+}
+
+/* Responsividade para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    #gender-style {
+        width: 100%; /* Ocupa 100% da largura em telas menores */
+    }
+
+    .form-style select {
+        padding: 8px; /* Reduz o padding */
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    .form-style {
+        gap: 10px; /* Reduz o espaçamento entre os elementos */
+    }
+
+    .form-style input {
+        padding: 8px; /* Reduz o padding */
+    }
+
+    .form-style input[type="date"],
+    .form-style input[type="time"] {
+        padding: 10px; /* Reduz o padding */
+        height: 38px; /* Reduz a altura */
+    }
+
+    .wrap {
+        flex-direction: column; /* Altera a direção para coluna em telas menores */
+        gap: 10px; /* Reduz o espaçamento entre os elementos */
+    }
+
+    .wrap label {
+        width: 100%; /* Ocupa 100% da largura em telas menores */
+    }
+}
+
+/* Responsividade para telas com largura máxima de 576px */
+@media (max-width: 576px) {
+    .register_intern {
+        padding: 10px; /* Reduz o padding */
+        margin-bottom: 120px; /* Aumenta a margem inferior para evitar sobreposição com a sidebar */
+    }
+
+    .form-style label {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    .form-style input {
+        padding: 6px; /* Reduz o padding */
+    }
+
+    .form-style input[type="date"],
+    .form-style input[type="time"] {
+        padding: 8px; /* Reduz o padding */
+        height: 36px; /* Reduz a altura */
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    /* Ajuste específico para o botão de cadastrar em mobile */
+    .submit-button {
+        width: 100%; /* Ocupa 100% da largura */
+        padding: 12px; /* Aumenta o padding para facilitar o clique */
+        font-size: 14px; /* Aumenta o tamanho da fonte */
+        margin-top: 20px; /* Adiciona margem superior */
+    }
+}

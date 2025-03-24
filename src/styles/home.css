@@ -1,0 +1,136 @@
+/* Define o estilo base para a seção .home */
+.home {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    flex-direction: column; /* Organiza os elementos em uma coluna vertical */
+    width: 100%; /* Ocupa 100% da largura disponível */
+    padding: 20px; /* Adiciona um espaçamento interno de 20px */
+}
+
+/* Estilo para a lista de estagiários (.interns) */
+.interns {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    flex-direction: column; /* Organiza os elementos em uma coluna vertical */
+    justify-content: center; /* Centraliza os elementos verticalmente */
+    align-items: center; /* Centraliza os elementos horizontalmente */
+    gap: 20px; /* Adiciona um espaçamento de 20px entre os elementos */
+}
+
+/* Estilo para cada card de estagiário (.intern) */
+.intern {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    justify-content: space-between; /* Distribui o espaço entre os elementos */
+    width: 100%; /* Ocupa 100% da largura disponível */
+    max-width: 800px; /* Define uma largura máxima para o card */
+    background-color: white; /* Define o fundo do card como branco */
+    border-radius: 10px; /* Arredonda as bordas do card */
+    padding: 15px 20px; /* Adiciona um espaçamento interno */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adiciona transição suave */
+}
+
+/* Efeito de hover no card de estagiário */
+.intern:hover {
+    transform: translateY(-5px); /* Move o card para cima ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Aumenta a sombra ao passar o mouse */
+}
+
+/* Estilo para a seção de informações do usuário (.user) */
+.user {
+    display: flex; /* Usa flexbox para organizar os elementos internos */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    gap: 10px; /* Adiciona um espaçamento de 10px entre os elementos */
+    width: 100%; /* Ocupa 100% da largura disponível */
+    font-size: 14px; /* Define o tamanho da fonte */
+}
+
+/* Estilo para a seção de informações (.infos) */
+.infos {
+    text-align: center; /* Centraliza o texto horizontalmente */
+    width: 100%; /* Ocupa 100% da largura disponível */
+}
+
+/* Estilo para os parágrafos dentro de .infos */
+.infos p {
+    font-weight: 600; /* Define o peso da fonte como semi-negrito */
+}
+
+/* Estilo para o indicador de status (.color-status) */
+.color-status {
+    background-color: green; /* Define a cor de fundo como verde */
+    width: 10px; /* Define a largura */
+    height: 10px; /* Define a altura */
+    border-radius: 50%; /* Torna o elemento redondo */
+}
+
+/* Classes de cores para textos ou ícones */
+.green {
+    color: green; /* Define a cor do texto como verde */
+}
+
+.yellow {
+    color: #ffcc00; /* Define a cor do texto como amarelo */
+}
+
+.gray {
+    color: gray; /* Define a cor do texto como cinza */
+}
+
+/* Estilo para o ícone de olho (.fa-eye) */
+.fa-eye {
+    font-size: 18px; /* Define o tamanho do ícone */
+    cursor: pointer; /* Muda o cursor para pointer ao passar o mouse */
+    opacity: 0.7; /* Define a opacidade do ícone */
+    padding: 10px; /* Adiciona um espaçamento interno */
+    transition: opacity 0.3s ease; /* Adiciona transição suave na opacidade */
+}
+
+/* Efeito de hover no ícone de olho */
+.fa-eye:hover {
+    opacity: 1; /* Aumenta a opacidade ao passar o mouse */
+}
+
+/* Media query para telas com largura máxima de 768px */
+@media (max-width: 768px) {
+    .intern {
+        flex-direction: column; /* Altera a direção do flex para coluna */
+        align-items: flex-start; /* Alinha os elementos à esquerda */
+        gap: 10px; /* Reduz o espaçamento entre os elementos */
+        padding: 15px; /* Ajusta o espaçamento interno */
+    }
+
+    .user {
+        flex-direction: column; /* Altera a direção do flex para coluna */
+        align-items: flex-start; /* Alinha os elementos à esquerda */
+        gap: 5px; /* Reduz o espaçamento entre os elementos */
+    }
+
+    .infos {
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    .fa-eye {
+        align-self: flex-end; /* Alinha o ícone à direita */
+    }
+}
+
+/* Media query para telas com largura máxima de 576px */
+@media (max-width: 576px) {
+    .home {
+        padding: 10px; /* Reduz o espaçamento interno */
+    }
+
+    .intern {
+        width: 100%; /* Ocupa 100% da largura disponível */
+        padding: 10px; /* Reduz o espaçamento interno */
+    }
+
+    .user {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    .fa-eye {
+        font-size: 16px; /* Reduz o tamanho do ícone */
+        padding: 8px; /* Reduz o espaçamento interno */
+    }
+}

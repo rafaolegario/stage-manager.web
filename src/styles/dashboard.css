@@ -1,0 +1,254 @@
+/* Importa a fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Reset básico para todos os elementos */
+* {
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove paddings padrão */
+    box-sizing: border-box; /* Faz com que padding e border não aumentem o tamanho do elemento */
+    font-family: "Poppins", sans-serif; /* Define a fonte Poppins como padrão */
+}
+
+/* Variáveis de cores */
+:root {
+    ---black-blue: rgb(6, 6, 81); /* Azul escuro */
+    --white: #fff; /* Branco */
+    --background: rgb(4, 4, 49); /* Fundo escuro */
+}
+
+/* Estilo para o corpo da página */
+body {
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex; /* Usa flexbox para organizar os elementos */
+    flex-direction: column; /* Organiza os elementos em uma coluna */
+}
+
+/* Estilo para o conteúdo principal */
+main {
+    display: flex; /* Usa flexbox para organizar os elementos */
+    flex-grow: 1; /* Faz com que ocupe o espaço restante */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse o container */
+}
+
+/* Estilo para a barra lateral */
+.sidebar {
+    text-align: center; /* Centraliza o texto */
+    background-color: var(---black-blue); /* Define a cor de fundo */
+    width: 25%; /* Ocupa 25% da largura do container */
+    border-right: 1.5px solid var(--white); /* Adiciona uma borda à direita */
+    padding: 15px; /* Adiciona espaçamento interno */
+    color: var(--white); /* Define a cor do texto como branco */
+    transition: width 0.3s ease; /* Adiciona transição suave na largura */
+}
+
+/* Estilo para o título da barra lateral */
+.sidebar h1 {
+    margin-bottom: 20px; /* Adiciona margem inferior */
+}
+
+/* Estilo para a lista na barra lateral */
+.sidebar ul {
+    list-style: none; /* Remove os marcadores de lista */
+    display: flex; /* Usa flexbox para organizar os elementos */
+    flex-direction: column; /* Organiza os elementos em uma coluna */
+    gap: 30px; /* Adiciona espaçamento entre os itens */
+}
+
+/* Estilo para os itens da lista */
+.sidebar ul li {
+    display: flex; /* Usa flexbox para organizar os elementos */
+    cursor: pointer; /* Muda o cursor para pointer ao passar o mouse */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    gap: 15px; /* Adiciona espaçamento entre os elementos */
+    color: rgb(214, 194, 194); /* Define a cor do texto */
+    padding: 1px; /* Adiciona um pequeno espaçamento interno */
+}
+
+/* Estilo para os ícones na lista */
+.sidebar ul li i {
+    font-size: 25px; /* Define o tamanho dos ícones */
+}
+
+/* Efeito de hover nos itens da lista */
+.sidebar ul li:hover {
+    color: var(--white); /* Muda a cor do texto ao passar o mouse */
+}
+
+/* Estilo para o painel principal (dashboard) */
+.dashboard {
+    width: 100%; /* Ocupa 100% da largura disponível */
+    background-color: var(--background); /* Define a cor de fundo */
+    height: 100%; /* Ocupa 100% da altura disponível */
+    overflow-y: auto; /* Adiciona scroll vertical se necessário */
+    position: relative; /* Define posicionamento relativo */
+    padding-top: 60px; /* Adiciona espaçamento no topo para evitar sobreposição com o header */
+}
+
+/* Estilo para a barra de scroll */
+::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de scroll */
+    height: 10px; /* Altura da barra de scroll */
+}
+
+/* Estilo para o fundo da barra de scroll */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Cor de fundo */
+    border-radius: 10px; /* Arredonda as bordas */
+}
+
+/* Estilo para o "ponteiro" da barra de scroll */
+::-webkit-scrollbar-thumb {
+    background-color: var(---black-blue); /* Cor do ponteiro */
+    border-radius: 10px; /* Arredonda as bordas */
+    border: 2px solid #262323; /* Adiciona uma borda */
+}
+
+/* Estilo para o cabeçalho (header) */
+header {
+    display: flex; /* Usa flexbox para organizar os elementos */
+    gap: 20%; /* Adiciona espaçamento entre os elementos */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    text-align: center; /* Centraliza o texto */
+    position: fixed; /* Fixa o header no topo */
+    background-color: var(--background); /* Define a cor de fundo */
+    width: 100%; /* Ocupa 100% da largura */
+    top: 0; /* Posiciona no topo */
+    padding: 10px 20px; /* Adiciona espaçamento interno */
+    padding-top: 40px; /* Adiciona espaçamento no topo */
+    z-index: 999; /* Garante que o header fique acima de outros elementos */
+    height: 60px; /* Define uma altura fixa */
+}
+
+/* Estilo para o título no header */
+header h2 {
+    color: var(--white); /* Define a cor do texto */
+    font-size: 18px; /* Define o tamanho da fonte */
+}
+
+/* Estilo para a barra de pesquisa */
+.search {
+    display: flex; /* Usa flexbox para organizar os elementos */
+    background-color: var(--white); /* Define a cor de fundo */
+    width: 600px; /* Define uma largura fixa */
+    border-radius: 20px; /* Arredonda as bordas */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    justify-content: center; /* Centraliza os elementos horizontalmente */
+}
+
+/* Estilo para o input de pesquisa */
+.search input {
+    width: 100%; /* Ocupa 100% da largura disponível */
+    border: none; /* Remove a borda */
+    border-radius: 20px; /* Arredonda as bordas */
+    padding: 10px; /* Adiciona espaçamento interno */
+    outline: none; /* Remove o contorno ao focar */
+}
+
+/* Estilo para o ícone de pesquisa */
+.search i {
+    font-size: 20px; /* Define o tamanho do ícone */
+    padding: 10px; /* Adiciona espaçamento interno */
+}
+
+/* Estilo para o rodapé (footer) */
+footer {
+    background-color: #2C3E50; /* Define a cor de fundo */
+    color: var(--white); /* Define a cor do texto */
+    text-align: center; /* Centraliza o texto */
+    padding: 10px; /* Adiciona espaçamento interno */
+}
+
+/* Media query para telas com largura máxima de 1200px */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 30%; /* Aumenta a largura da barra lateral */
+    }
+
+    header {
+        gap: 10%; /* Aumenta o espaçamento entre os elementos */
+    }
+
+    .search {
+        width: 500px; /* Reduz a largura da barra de pesquisa */
+    }
+}
+
+/* Media query para telas com largura máxima de 992px */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 35%; /* Aumenta a largura da barra lateral */
+    }
+
+    header {
+        gap: 5%; /* Aumenta o espaçamento entre os elementos */
+    }
+
+    .search {
+        width: 450px; /* Reduz a largura da barra de pesquisa */
+    }
+}
+
+
+
+/* Media query para telas com largura máxima de 576px */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Ocupa 100% da largura */
+        height: auto; /* Altura automática */
+        position: fixed; /* Fixa a barra lateral */
+        bottom: 0; /* Posiciona na parte inferior */
+        top: auto; /* Remove o posicionamento no topo */
+        z-index: 1000; /* Garante que fique acima de outros elementos */
+        border-right: none; /* Remove a borda direita */
+        border-top: 1.5px solid var(--white); /* Adiciona uma borda no topo */
+    }
+
+    .sidebar ul {
+        flex-direction: row; /* Organiza os itens em uma linha */
+        justify-content: space-around; /* Distribui o espaço entre os itens */
+        gap: 10px; /* Adiciona espaçamento entre os itens */
+    }
+
+    .sidebar ul li {
+        flex-direction: column; /* Organiza os elementos em uma coluna */
+        gap: 5px; /* Adiciona espaçamento entre os elementos */
+    }
+
+    .sidebar ul li i {
+        font-size: 20px; /* Reduz o tamanho dos ícones */
+    }
+
+    .dashboard {
+        margin-bottom: 80px; /* Adiciona margem inferior para evitar sobreposição */
+    }
+
+    .search {
+        width: 85%; /* Ocupa 100% da largura */
+    }
+
+    header {
+        flex-direction: row; /* Organiza os elementos em uma linha */
+        gap: 10px; /* Adiciona espaçamento entre os elementos */
+        padding: 16px; /* Ajusta o espaçamento interno */
+        left: 0;
+    }
+
+    header h2 {
+        font-size: 16px; /* Reduz o tamanho da fonte */
+    }
+}
+
+/* Media query para telas com largura máxima de 400px */
+@media (max-width: 400px) {
+    .sidebar ul li i {
+        font-size: 18px; /* Reduz o tamanho dos ícones */
+    }
+
+    .sidebar ul li span {
+        font-size: 12px; /* Reduz o tamanho da fonte */
+    }
+
+    header h2 {
+        font-size: 14px; /* Reduz o tamanho da fonte */
+    }
+}

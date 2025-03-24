@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./src/styles/dashboard.css" />
+    <link rel="stylesheet" href="./src/styles/home.css" />
+    <link rel="stylesheet" href="./src/styles/register-intern.css" />
+    <title>Stage Manager</title>
+  </head>
+  <body>
+    <main>
+      <!-- NAVEGAÇÃO -->
+
+      <nav class="sidebar">
+        <h1>STAGE MANAGER</h1>
+        <ul>
+          <li id="home" class="active-menu">
+            <i class="fa-solid fa-house-user"></i>
+            <p>Home</p>
+          </li>
+
+          <li id="intern-register">
+            <i class="fa-solid fa-person"></i>
+            <p>Cadastrar estagiário</p>
+          </li>
+
+          <li id="create-activity">
+            <i class="fa-solid fa-address-book"></i>
+            <p>Criar atividade</p>
+          </li>
+
+          <li id="ranking">
+            <i class="fa-solid fa-ranking-star"></i>
+            <p>Ranking</p>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- DASHBOARD -->
+
+      <div class="dashboard">
+        <!-- TELA HOME -->
+
+        <!-- <div class="home">
+          <header>
+            <h2>/Home</h2>
+            <div class="search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="Pesquisar estagiário..." />
+            </div>
+          </header>
+
+          <div class="interns">
+            <div class="intern">
+              <div class="user">
+                <i class="fa-solid fa-user"></i>
+                <h3>Rafael Olegario bisoffi</h3>
+              </div>
+              <div class="infos">
+                <p>Função:</p>
+                <span>Suporte a informatica</span>
+              </div>
+              <div class="infos">
+                <p>Status:</p>
+                <i class="fa-solid fa-circle green"></i>
+                <span>Em serviço</span>
+              </div>
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- FIM TELA HOME -->
+
+        <!-- TELA CADASTRAR ESTAGIÁRIO -->
+        <!-- <div class="register_intern">
+          <header>
+            <h2>/Cadastrar estagiário</h2>
+          </header>
+          <div class="input_fields">
+            <form id="register_form" class="form-style">
+              <div clanamess="wrap">
+                <label for="cpf">
+                  CPF:
+                  <input
+                    type="text"
+                    name="cpf"
+                    placeholder="123.456.789-00"
+                    required
+                  />
+                </label>
+                <label for="gender" id="gender-style">Gênero:
+                  <select name="gender">
+                    <option value="masc">Masculino</option>
+                    <option value="fem">Feminino</option>
+                    <option value="other_gender" selected>Prefiro não responder</option>
+                  </select>
+                </label>
+
+                <label for="age">
+                  Idade:
+                  <input type="number" name="age" placeholder="18" required>
+                </label>
+              </div>
+             
+              <div class="wrap">
+                <label for="name">
+                  Nome completo:
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="João da silva carvalho"
+                    required
+                  />
+                </label>
+               
+                <label for="email">
+                  E-mail:
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="joaodasilva@exemplo.com"
+                    required
+                  />
+                </label>
+              </div>
+              <div class="wrap">
+                <label for="cep">
+                  CEP:
+                  <input
+                    type="text"
+                    name="cep"
+                    placeholder="12.345.678"
+                    required
+                  />
+                </label>
+                <label for="city">
+                  Cidade:
+                  <input
+                    type="text"
+                    name="city"
+                    placeholder="São Paulo"
+                    required
+                  />
+                </label>
+              </div>
+
+              <label for="street">
+                Rua:
+                <input
+                  type="text"
+                  name="street"
+                  placeholder="Rua das colinas"
+                  required
+                />
+              </label>
+              <div class="wrap">
+                <label for="neighborhood">
+                  Bairro:
+                  <input
+                    type="text"
+                    name="neighborhood"
+                    placeholder="Bairro exemplo"
+                    required
+                  />
+                </label>
+                <label for="number">
+                  Número:
+                  <input type="number" name="number" placeholder="1234" />
+                </label>
+              </div>
+              <div class="wrap">
+                <label for="phone">
+                  Telefone:
+                  <input type="text" name="phone" placeholder="(11)12345-6789" />
+                </label>
+                <label for="role">
+                  Função:
+                  <input
+                    type="text"
+                    name="role"
+                    placeholder="Administração"
+                    required
+                  />
+                </label>
+              </div>
+
+              <div class="wrap">
+                <label for="start_date">
+                  Data de início:
+                  <input type="date" name="start_date" required />
+                </label>
+                <label for="end_date">
+                  Data de término (previsão):
+                  <input type="date" name="end_date" required />
+                </label>
+                <label for="getIn">
+                  Horário de entrada:
+                  <input type="time" name="getIn" required />
+                </label>
+                <label for="getOut">
+                  Horário de saída:
+                  <input type="time" name="getOut" required />
+                </label>
+              </div>
+              <div class="wrap">
+                <label for="course">
+                  Curso:
+                  <input
+                    type="text"
+                    name="course"
+                    placeholder="Direito"
+                    required
+                  />
+                </label>
+                <label for="university">
+                  Universidade:
+                  <input
+                    type="text"
+                    name="university"
+                    placeholder="Faculdade federal example"
+                  />
+                </label>
+              </div>
+
+              <label for="salary">
+                Salário:
+                <input type="number" name="salary" placeholder="R$2000.00" />
+              </label>
+              <button type="submit" class="submit-button">Cadastrar</button>
+            </form>
+          </div>
+        </div> -->
+        <!-- FIM TELA REGISTRO ESTAGIÁRIO -->
+      </div>
+    </main>
+    <footer>
+      <p>
+        <i class="fa-solid fa-copyright"></i> Desenvolvido por Stage manager
+        team - 2025
+      </p>
+    </footer>
+
+    <script src="src/dashboard/dashboard.ts" type="module"></script>
+  </body>
+</html>

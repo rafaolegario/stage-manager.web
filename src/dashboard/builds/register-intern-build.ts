@@ -1,0 +1,110 @@
+export function buildRegisterIntern(){
+
+  const Dashboard: HTMLElement | null = document.querySelector('.dashboard');
+  if (!Dashboard) {
+    console.error("Elemento .dashboard não encontrado!");
+    return;
+  }
+
+  Dashboard.innerHTML = ''
+
+  const header = document.createElement("header");
+  const title = document.createElement("h2");
+  title.textContent = "/Cadastrar estagiário";
+  header.appendChild(title);
+
+  const form = document.createElement("form");
+  form.id = "register_form";
+  form.classList.add("form-style");
+
+  const createInputField = (
+    type: string,
+    name: string,
+    placeholder: string,
+    required: boolean = false
+  ): HTMLLabelElement => {
+    const label = document.createElement("label");
+    label.htmlFor = name;
+    label.textContent = `${name.charAt(0).toUpperCase() + name.slice(1)}:`;
+    const input = document.createElement("input");
+    input.type = type;
+    input.name = name;
+    input.placeholder = placeholder;
+    if (required) input.required = true;
+    label.appendChild(input);
+    return label;
+  };
+
+  const createSelectField = (name: string, options: string[]): HTMLLabelElement => {
+    const label = document.createElement("label");
+    label.htmlFor = name;
+    label.textContent = `${name.charAt(0).toUpperCase() + name.slice(1)}:`;
+    const select = document.createElement("select");
+    select.name = name;
+    options.forEach((optionText) => {
+      const option = document.createElement("option");
+      option.value = optionText.toLowerCase().replace(" ", "_");
+      option.textContent = optionText;
+      select.appendChild(option);
+    });
+    label.appendChild(select);
+    return label;
+  };
+
+  const createWrap = (...elements: HTMLElement[]): HTMLDivElement => {
+    const wrap = document.createElement("div");
+    wrap.classList.add("wrap");
+    elements.forEach((element) => wrap.appendChild(element));
+    return wrap;
+  };
+
+  const cpfField = createInputField("text", "cpf", "123.456.789-00", true);
+  const genderField = createSelectField("gender", [
+    "Masculino",
+    "Feminino",
+    "Prefiro não responder",
+  ]);
+  const ageField = createInputField("number", "Idade", "18", true);
+  form.appendChild(createWrap(cpfField, genderField, ageField));
+
+  const nameField = createInputField("text", "Nome Completo", "João da silva carvalho", true);
+  const emailField = createInputField("email", "E-mail", "joaodasilva@exemplo.com", true);
+  form.appendChild(createWrap(nameField, emailField));
+
+  const cepField = createInputField("text", "cep", "12.345.678", true);
+  const cityField = createInputField("text", "Cidade", "São Paulo", true);
+  form.appendChild(createWrap(cepField, cityField));
+
+  const streetField = createInputField("text", "Rua", "Rua das colinas", true);
+  form.appendChild(streetField);
+
+  const neighborhoodField = createInputField("text", "Bairro", "Bairro exemplo", true);
+  const numberField = createInputField("number", "Número", "1234");
+  form.appendChild(createWrap(neighborhoodField, numberField));
+
+  const phoneField = createInputField("text", "Telefone", "(11)12345-6789");
+  const roleField = createInputField("text", "Função", "Administração", true);
+  form.appendChild(createWrap(phoneField, roleField));
+
+  const startDateField = createInputField("date", "Data de início", "", true);
+  const endDateField = createInputField("date", "Data de Termino (previsão)", "", true);
+  const getInField = createInputField("time", "Horário de entrada", "", true);
+  const getOutField = createInputField("time", "Horário de saída", "", true);
+  form.appendChild(createWrap(startDateField, endDateField, getInField, getOutField));
+
+  const courseField = createInputField("text", "Curso", "Direito", true);
+  const universityField = createInputField("text", "Universidade", "Faculdade federal example");
+  form.appendChild(createWrap(courseField, universityField));
+
+  const salaryField = createInputField("number", "Salário", "R$2000.00");
+  form.appendChild(salaryField);
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.classList.add("submit-button");
+  submitButton.textContent = "Cadastrar";
+  form.appendChild(submitButton);
+
+  Dashboard.appendChild(header);
+  Dashboard.appendChild(form);
+
+}
