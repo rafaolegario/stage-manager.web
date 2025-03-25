@@ -1,14 +1,14 @@
+import { CpfMask } from "../../utils/masks";
 import { GetFormDataToCreateIntern } from "../controllers/get-form-data-to-create-intern";
 
-export function buildRegisterIntern(){
-
-  const Dashboard: HTMLElement | null = document.querySelector('.dashboard');
+export function buildRegisterIntern() {
+  const Dashboard: HTMLElement | null = document.querySelector(".dashboard");
   if (!Dashboard) {
     console.error("Elemento .dashboard não encontrado!");
     return;
   }
 
-  Dashboard.innerHTML = ''
+  Dashboard.innerHTML = "";
 
   const header = document.createElement("header");
   const title = document.createElement("h2");
@@ -18,10 +18,10 @@ export function buildRegisterIntern(){
   const form = document.createElement("form");
   form.id = "register_form";
   form.classList.add("form-style");
-  form.addEventListener('submit', (event)=>{
-    event.preventDefault()
-    GetFormDataToCreateIntern()
-  })
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    GetFormDataToCreateIntern();
+  });
 
   const createInputField = (
     type: string,
@@ -34,6 +34,7 @@ export function buildRegisterIntern(){
     label.htmlFor = name;
     label.textContent = `${text.charAt(0).toUpperCase() + text.slice(1)}:`;
     const input = document.createElement("input");
+    input.value = "";
     input.type = type;
     input.name = name;
     input.placeholder = placeholder;
@@ -42,7 +43,10 @@ export function buildRegisterIntern(){
     return label;
   };
 
-  const createSelectField = (name: string, options: string[]): HTMLLabelElement => {
+  const createSelectField = (
+    name: string,
+    options: string[]
+  ): HTMLLabelElement => {
     const label = document.createElement("label");
     label.htmlFor = name;
     label.textContent = `${name.charAt(0).toUpperCase() + name.slice(1)}:`;
@@ -65,7 +69,20 @@ export function buildRegisterIntern(){
     return wrap;
   };
 
-  const cpfField = createInputField("text", "cpf", "Cpf", "123.456.789-00", true);
+  const cpfField = createInputField(
+    "text",
+    "cpf",
+    "Cpf",
+    "123.456.789-00",
+    true
+  );
+  const CpfinputElement = cpfField.querySelector("input") as HTMLInputElement;
+
+  CpfinputElement.addEventListener("input", () => {
+    // Aplica a máscara e atualiza o valor do campo
+    CpfinputElement.value = CpfMask(CpfinputElement.value);
+  });
+
   const genderField = createSelectField("gender", [
     "Masculino",
     "Feminino",
@@ -74,36 +91,124 @@ export function buildRegisterIntern(){
   const ageField = createInputField("number", "age", "Idade", "18", true);
   form.appendChild(createWrap(cpfField, genderField, ageField));
 
-  const nameField = createInputField("text", "name", "Nome Completo", "João da silva carvalho", true);
-  const emailField = createInputField("email", "email", "E-mail", "joaodasilva@exemplo.com", true);
+  const nameField = createInputField(
+    "text",
+    "name",
+    "Nome Completo",
+    "João da silva carvalho",
+    true
+  );
+  const emailField = createInputField(
+    "email",
+    "email",
+    "E-mail",
+    "joaodasilva@exemplo.com",
+    true
+  );
   form.appendChild(createWrap(nameField, emailField));
 
   const cepField = createInputField("text", "cep", "Cep", "12.345.678", true);
-  const cityField = createInputField("text", "city", "Cidade", "São Paulo", true);
+  const cityField = createInputField(
+    "text",
+    "city",
+    "Cidade",
+    "São Paulo",
+    true
+  );
   form.appendChild(createWrap(cepField, cityField));
 
-  const streetField = createInputField("text", "street", "Rua", "Rua das colinas", true);
+  const streetField = createInputField(
+    "text",
+    "street",
+    "Rua",
+    "Rua das colinas",
+    true
+  );
   form.appendChild(streetField);
 
-  const neighborhoodField = createInputField("text", "neighborhood", "Bairro", "Bairro exemplo", true);
-  const numberField = createInputField("number", "house_number", "Número", "1234");
+  const neighborhoodField = createInputField(
+    "text",
+    "neighborhood",
+    "Bairro",
+    "Bairro exemplo",
+    true
+  );
+  const numberField = createInputField(
+    "number",
+    "house_number",
+    "Número",
+    "1234"
+  );
   form.appendChild(createWrap(neighborhoodField, numberField));
 
-  const phoneField = createInputField("text", "phone", "Telefone", "(11)12345-6789");
-  const roleField = createInputField("text", "role", "Função", "Administração", true);
+  const phoneField = createInputField(
+    "text",
+    "phone",
+    "Telefone",
+    "(11)12345-6789"
+  );
+  const roleField = createInputField(
+    "text",
+    "role",
+    "Função",
+    "Administração",
+    true
+  );
   form.appendChild(createWrap(phoneField, roleField));
 
-  const startDateField = createInputField("date", "start_date", "Data de início", "", true);
-  const endDateField = createInputField("date", "end_date", "Data de Termino (previsão)", "", true);
-  const getInField = createInputField("time", "getIn_hour", "Horário de entrada", "", true);
-  const getOutField = createInputField("time", "getOut_hour", "Horário de saída", "", true);
-  form.appendChild(createWrap(startDateField, endDateField, getInField, getOutField));
+  const startDateField = createInputField(
+    "date",
+    "start_date",
+    "Data de início",
+    "",
+    true
+  );
+  const endDateField = createInputField(
+    "date",
+    "end_date",
+    "Data de Termino (previsão)",
+    "",
+    true
+  );
+  const getInField = createInputField(
+    "time",
+    "getIn_hour",
+    "Horário de entrada",
+    "",
+    true
+  );
+  const getOutField = createInputField(
+    "time",
+    "getOut_hour",
+    "Horário de saída",
+    "",
+    true
+  );
+  form.appendChild(
+    createWrap(startDateField, endDateField, getInField, getOutField)
+  );
 
-  const courseField = createInputField("text", "course", "Curso", "Direito", true);
-  const universityField = createInputField("text", "universty", "Universidade", "Faculdade federal example");
+  const courseField = createInputField(
+    "text",
+    "course",
+    "Curso",
+    "Direito",
+    true
+  );
+  const universityField = createInputField(
+    "text",
+    "universty",
+    "Universidade",
+    "Faculdade federal example"
+  );
   form.appendChild(createWrap(courseField, universityField));
 
-  const salaryField = createInputField("number", "salary", "Salário", "R$2000.00");
+  const salaryField = createInputField(
+    "number",
+    "salary",
+    "Salário",
+    "R$2000.00"
+  );
   form.appendChild(salaryField);
   const submitButton = document.createElement("button");
   submitButton.type = "submit";
@@ -113,5 +218,4 @@ export function buildRegisterIntern(){
 
   Dashboard.appendChild(header);
   Dashboard.appendChild(form);
-
 }
