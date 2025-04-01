@@ -1,5 +1,5 @@
 export interface Intern {
-  intern_id: string
+  internId: string
   name: string
   age: number
   cpf: string
@@ -9,11 +9,11 @@ export interface Intern {
   university: string
   salary: number
   role: string
-  on_work: boolean
-  getIn_hour: string
-  getOut_hour: string
-  start_date: string
-  end_date: string
+  onWork: boolean
+  getInHour: string
+  getOutHour: string
+  startDate: string
+  endDate: string
   delayed: number
   absent: number
 }
@@ -28,8 +28,8 @@ export interface InternDataInput {
   university: string
   salary: number
   role: string
-  getIn_hour: string
-  getOut_hour: string
-  start_date: string
-  end_date: string
+  getInHour: string
+  getOutHour: string
+  startDate: string
+  endDate: string
 }

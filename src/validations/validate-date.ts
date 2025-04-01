@@ -1,16 +1,15 @@
-import dayjs from "dayjs"
+import dayjs from 'dayjs'
 
-interface ValidateDateParms{
-    start_date: any,
-    end_date: any
+interface ValidateDateParms {
+  startDate: string
+  endDate: string
 }
 
-export function ValidateDate({ start_date, end_date } : ValidateDateParms){
-    const start = dayjs(start_date);
-    const end = dayjs(end_date);
+export function ValidateDate({ startDate, endDate }: ValidateDateParms) {
+  const start = dayjs(startDate)
+  const end = dayjs(endDate)
 
-    if (end.isBefore(start)) {
-      throw new Error("A data de conclusão deve ser maior que a data ínicio")
-    }
-  
+  if (end.isBefore(start)) {
+    throw new Error('A data de conclusão deve ser maior que a data ínicio')
+  }
 }
