@@ -1,7 +1,7 @@
-import { Intern } from "../@types/intern";
-import { interns } from "../FakeDatabase";
+import { Intern } from '../@types/intern'
+import { interns } from '../FakeDatabase'
 
 export async function GetAllInterns(): Promise<Intern[]> {
-  //conexão HTTP
-  return interns;
+  // conexão HTTP
+  return interns
 }
