@@ -1,5 +1,7 @@
+import { ZodError } from 'zod'
 import { InternDataInput } from '../../@types/intern'
 import { CreateIntern } from '../../http/create-intern'
+import { sendFieldsErrorNotification } from '../../utils/send-fields-error-notification'
 import { ToastfyPopUp } from '../../utils/toastfy-popup'
 import { ValidateDate } from '../../validations/validate-date'
 import { ValidateInternFields } from '../../validations/validate-intern-fields'
@@ -22,6 +24,16 @@ export async function GetFormDataToCreateIntern() {
     ToastfyPopUp('Estagiário criado com sucesso!', 'green')
     form.reset()
   } catch (error) {
-    ToastfyPopUp('Campos ínvalidos', 'red')
+
+    if (error instanceof ZodError) {
+      sendFieldsErrorNotification(error);
+    }
+
+    else if(error instanceof Error){
+      ToastfyPopUp(error.message,'blue')
+    }
+   
+
+    
   }
 }
