@@ -1,5 +1,5 @@
 import Toastify from 'toastify-js'
-import 'toastify-js/src/toastify.css' // Importando os estilos do Toastify
+import 'toastify-js/src/toastify.css' 
 
 export function ToastfyPopUp(text: string, color: string) {
   Toastify({
@@ -8,6 +8,6 @@ export function ToastfyPopUp(text: string, color: string) {
     close: true,
     gravity: 'top',
     position: 'right',
-    backgroundColor: color, // Cor de fundo
+    backgroundColor: color, 
   }).showToast()
 }
