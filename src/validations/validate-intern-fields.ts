@@ -12,16 +12,16 @@ export function ValidateInternFields(data: FormData): InternDataInput {
     university: data.get('universty'),
     salary: data.get('salary'),
     role: data.get('role'),
-    getIn_hour: data.get('getIn_hour'),
-    getOut_hour: data.get('getOut_hour'),
-    start_date: data.get('start_date'),
-    end_date: data.get('end_date'),
+    getInHour: data.get('getIn_hour'),
+    getOutHour: data.get('getOut_hour'),
+    startDate: data.get('start_date'),
+    endDate: data.get('end_date'),
     city: data.get('city'),
     cep: data.get('cep'),
     street: data.get('street'),
     neighborhood: data.get('neighborhood'),
     gender: data.get('gender'),
-    house_number: data.get('house_number'),
+    houseNumber: data.get('house_number'),
   }
 
   const InternFieldsSchema = z.object({
