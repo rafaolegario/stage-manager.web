@@ -35,15 +35,19 @@ export function buildRegisterIntern() {
     text: string,
     placeholder: string,
     required: boolean = false,
+    MaxLenght?: number
   ): HTMLLabelElement => {
     const label = document.createElement('label')
     label.htmlFor = name
-    label.textContent = `${text.charAt(0).toUpperCase()}:`
+    label.textContent = `${text.charAt(0).toUpperCase() + text.slice(1)}:`
     const input = document.createElement('input')
     input.value = ''
     input.type = type
     input.name = name
     input.placeholder = placeholder
+    if(MaxLenght){
+      input.maxLength = MaxLenght
+    }
     if (required) input.required = true
     label.appendChild(input)
     return label
@@ -51,11 +55,12 @@ export function buildRegisterIntern() {
 
   const createSelectField = (
     name: string,
+    text: string,
     options: string[],
   ): HTMLLabelElement => {
     const label = document.createElement('label')
     label.htmlFor = name
-    label.textContent = `${name.charAt(0).toUpperCase() + name.slice(1)}:`
+    label.textContent = `${text.charAt(0).toUpperCase() + text.slice(1)}:`
     const select = document.createElement('select')
     select.name = name
     options.forEach((optionText) => {
@@ -81,15 +86,15 @@ export function buildRegisterIntern() {
     'Cpf',
     '123.456.789-00',
     true,
+    14
   )
   const CpfinputElement = cpfField.querySelector('input') as HTMLInputElement
 
   CpfinputElement.addEventListener('input', () => {
-    // Aplica a máscara e atualiza o valor do campo
     CpfinputElement.value = CpfMask(CpfinputElement.value)
   })
 
-  const genderField = createSelectField('gender', [
+  const genderField = createSelectField('gender','Gênero', [
     'Masculino',
     'Feminino',
     'Prefiro não responder',
@@ -113,13 +118,13 @@ export function buildRegisterIntern() {
   )
   form.appendChild(createWrap(nameField, emailField))
 
-  const cepField = createInputField('text', 'cep', 'Cep', '12.345.678', true)
+  const cepField = createInputField('text', 'cep', 'Cep', '12.345.678', true, 9)
   const cityField = createInputField(
     'text',
     'city',
     'Cidade',
     'São Paulo',
-    true,
+    true
   )
   form.appendChild(createWrap(cepField, cityField))
 
@@ -152,6 +157,8 @@ export function buildRegisterIntern() {
     'phone',
     'Telefone',
     '(11)12345-6789',
+    true,
+    14
   )
   const roleField = createInputField(
     'text',
