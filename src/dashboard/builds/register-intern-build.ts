@@ -35,7 +35,7 @@ export function buildRegisterIntern() {
     text: string,
     placeholder: string,
     required: boolean = false,
-    MaxLenght?: number
+    MaxLenght?: number,
   ): HTMLLabelElement => {
     const label = document.createElement('label')
     label.htmlFor = name
@@ -45,7 +45,7 @@ export function buildRegisterIntern() {
     input.type = type
     input.name = name
     input.placeholder = placeholder
-    if(MaxLenght){
+    if (MaxLenght) {
       input.maxLength = MaxLenght
     }
     if (required) input.required = true
@@ -86,7 +86,7 @@ export function buildRegisterIntern() {
     'Cpf',
     '123.456.789-00',
     true,
-    14
+    14,
   )
   const CpfinputElement = cpfField.querySelector('input') as HTMLInputElement
 
@@ -94,7 +94,7 @@ export function buildRegisterIntern() {
     CpfinputElement.value = CpfMask(CpfinputElement.value)
   })
 
-  const genderField = createSelectField('gender','Gênero', [
+  const genderField = createSelectField('gender', 'Gênero', [
     'Masculino',
     'Feminino',
     'Prefiro não responder',
@@ -124,7 +124,7 @@ export function buildRegisterIntern() {
     'city',
     'Cidade',
     'São Paulo',
-    true
+    true,
   )
   form.appendChild(createWrap(cepField, cityField))
 
@@ -158,7 +158,7 @@ export function buildRegisterIntern() {
     'Telefone',
     '(11)12345-6789',
     true,
-    14
+    14,
   )
   const roleField = createInputField(
     'text',
