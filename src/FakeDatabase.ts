@@ -2,9 +2,10 @@ import { Intern } from './@types/intern'
 
 export const interns: Intern[] = [
   {
-    internId: 'INT001',
+    id: 'INT001',
     name: 'João Silva',
     age: 22,
+    gender: 'Masculino',
     cpf: '123.456.789-00',
     phone: '(11) 98765-4321',
     email: 'joao.silva@example.com',
@@ -21,9 +22,10 @@ export const interns: Intern[] = [
     absent: 1,
   },
   {
-    internId: 'INT002',
+    id: 'INT002',
     name: 'Maria Oliveira',
     age: 21,
+    gender: 'Feminino',
     cpf: '987.654.321-00',
     phone: '(11) 99999-8888',
     email: 'maria.oliveira@example.com',
@@ -40,9 +42,10 @@ export const interns: Intern[] = [
     absent: 0,
   },
   {
-    internId: 'INT003',
+    id: 'INT003',
     name: 'Carlos Santos',
     age: 23,
+    gender: 'Masculino',
     cpf: '321.654.987-00',
     phone: '(21) 91234-5678',
     email: 'carlos.santos@example.com',
