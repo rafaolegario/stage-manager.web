@@ -1,6 +1,7 @@
 export interface Intern {
-  internId: string
+  id: string
   name: string
+  gender: string
   age: number
   cpf: string
   phone: string
@@ -21,6 +22,7 @@ export interface Intern {
 export interface InternDataInput {
   name: string
   age: number
+  gender: string
   cpf: string
   phone: string
   email: string
