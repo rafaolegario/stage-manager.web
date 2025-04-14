@@ -1,5 +1,6 @@
 import { VerifyStatus, StatusData } from '../../utils/VerifyStatus'
 import { Intern } from '../../@types/intern'
+import { viewInternInfos } from './view-intern-infos-build'
 
 export async function buildHome(
   data: Intern[],
@@ -96,9 +97,9 @@ export async function buildHome(
 
       const eyeIcon: HTMLElement = document.createElement('i')
       eyeIcon.className = 'fa-solid fa-eye'
-      // eyeIcon.addEventListener('click', ()=>{
-      //   InternProfile(intern.intern_id)
-      // })
+      eyeIcon.addEventListener('click', ()=>{
+        viewInternInfos(intern)
+      })
       internDiv.appendChild(eyeIcon)
 
       internsDiv.appendChild(internDiv)
