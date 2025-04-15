@@ -119,5 +119,5 @@ export async function createActivityBuild(interns: Intern[]) {
 
   inputFields.appendChild(form);
   createDiv.appendChild(inputFields);
-  dash.appendChild(createDiv);
+  Dashboard.appendChild(createDiv);
 }
