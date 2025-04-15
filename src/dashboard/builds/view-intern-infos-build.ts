@@ -4,7 +4,6 @@ import { GetInternActivities } from "../../http/get-intern-activites";
 
 export async function viewInternInfos(intern: Intern){
   const activities : activity[] = await GetInternActivities(intern.id)
-
   const dash: any = document.querySelector('.dashboard')
 
   dash.innerHTML = ''
@@ -68,8 +67,8 @@ export async function viewInternInfos(intern: Intern){
 
   internSection.appendChild(createCard('Empresa', [
     { label: 'Função', value: intern.role },
-    { label: 'Início', value: intern.startDate },
-    { label: 'Término', value: intern.endDate },
+    { label: 'Início', value: intern.startDate.toLocaleDateString('pt-BR') },
+    { label: 'Término', value: intern.endDate.toLocaleDateString('pt-BR') },
     { label: 'Entrada', value: intern.getInHour },
     { label: 'Saída', value: intern.getOutHour },
     { label: 'Salário', value: `R$${intern.salary.toFixed(2)}` }
@@ -112,10 +111,16 @@ export async function viewInternInfos(intern: Intern){
       p1.appendChild(p1Strong)
   
       const p2 = document.createElement('p')
-      p2.textContent = `Entrega: ${act.dueDate}`
+      p2.textContent = `Entrega: ${act.dueDate.toLocaleDateString('pt-BR')}`
   
       const p3 = document.createElement('p')
-      p3.textContent = `Status: ${act.status}`
+      let status = ''
+      if(act.status === 'unfinished'){
+        status = 'Pendente'
+      }else{
+        status = 'Concluída'
+      }
+      p3.textContent = `Status: ${status}`
   
       const actions = document.createElement('div')
       actions.className = 'actions'
@@ -167,6 +172,5 @@ export async function viewInternInfos(intern: Intern){
   extraSection.appendChild(graphDiv)
   viewDiv.appendChild(extraSection)
 
-  dashboard.innerHTML = ''
   dashboard.appendChild(viewDiv)
 }

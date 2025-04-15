@@ -13,8 +13,8 @@ export interface Intern {
   onWork: boolean
   getInHour: string
   getOutHour: string
-  startDate: string
-  endDate: string
+  startDate: Date
+  endDate: Date
   delayed: number
   absent: number
 }
@@ -32,6 +32,6 @@ export interface InternDataInput {
   role: string
   getInHour: string
   getOutHour: string
-  startDate: string
-  endDate: string
+  startDate: Date
+  endDate: Date
 }

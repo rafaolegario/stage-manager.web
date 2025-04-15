@@ -1,3 +1,5 @@
+import { activity } from './@types/activity'
+import { address } from './@types/address'
 import { Intern } from './@types/intern'
 
 export const interns: Intern[] = [
@@ -16,8 +18,8 @@ export const interns: Intern[] = [
     onWork: true,
     getInHour: '09:00',
     getOutHour: '15:00',
-    startDate: '2024-02-01',
-    endDate: '2025-01-31',
+    startDate: new Date('2024-02-01'),
+    endDate: new Date('2024-02-22'),
     delayed: 2,
     absent: 1,
   },
@@ -36,8 +38,8 @@ export const interns: Intern[] = [
     onWork: true,
     getInHour: '08:30',
     getOutHour: '14:30',
-    startDate: '2024-03-01',
-    endDate: '2025-02-28',
+    startDate: new Date('2024-02-01'),
+    endDate: new Date('2024-02-22'),
     delayed: 1,
     absent: 0,
   },
@@ -56,9 +58,13 @@ export const interns: Intern[] = [
     onWork: false,
     getInHour: '10:00',
     getOutHour: '16:00',
-    startDate: '2024-01-15',
-    endDate: '2024-12-15',
+    startDate: new Date('2024-02-01'),
+    endDate: new Date('2024-02-22'),
     delayed: 3,
     absent: 2,
   },
 ]
+
+export const activities: activity[] = [] 
+
+export const Address: address[] = []

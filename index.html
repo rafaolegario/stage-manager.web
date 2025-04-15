@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -13,15 +13,16 @@
     <link rel="stylesheet" href="./src/styles/dashboard.css" />
     <link rel="stylesheet" href="./src/styles/home.css" />
     <link rel="stylesheet" href="./src/styles/register-intern.css" />
-    <link rel="stylesheet" href="src/styles/view-intern.css">
-    <title>Stage Manager</title>
+    <link rel="stylesheet" href="src/styles/view-intern.css" />
+    <link rel="stylesheet" href="src/styles/create-activity.css">
+    <title>Intern Manager</title>
   </head>
   <body>
     <main>
       <!-- NAVEGAÇÃO -->
 
       <nav class="sidebar">
-        <h1>STAGE MANAGER</h1>
+        <h1>INTERN MANAGER</h1>
         <ul>
           <li id="home" class="active-menu">
             <i class="fa-solid fa-house-user"></i>
@@ -50,7 +51,6 @@
       <div class="dashboard">
         <div class="info"></div>
         <!-- TELA HOME -->
-
         <!-- <div class="home">
           <header>
             <h2>/Home</h2>
@@ -79,7 +79,6 @@
             </div>
           </div>
         </div> -->
-
         <!-- FIM TELA HOME -->
 
         <!-- TELA CADASTRAR ESTAGIÁRIO -->
@@ -244,7 +243,67 @@
         <!-- FIM TELA REGISTRO ESTAGIÁRIO -->
 
         <!-- TELA DE CRIAR ATIVIDADE -->
-         
+        <!-- <div class="create-activity">
+          <header>
+            <h2>/Criar atividade</h2>
+          </header>
+          <div class="input_fields">
+            <form id="create-form" class="form-style">
+              <div class="wrap">
+                <label for="title">
+                  Título:
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Título da atividade"
+                    required
+                  />
+                </label>
+                <label for="due_date">
+                  Data de entrega:
+                  <input type="date" name="due_date" required />
+                </label>
+               
+              </div>
+
+                <label for="description">
+                  Descrição:
+                  <textarea
+                    name="description"
+                    rows="4"
+                    placeholder="Descrição da atividade"
+                    required
+                  ></textarea>
+                </label>
+        
+              <div class="interns_choose">
+                <h3>Selecionar estagiários:</h3>
+                <div class="interns_checkbox">
+                  <div class="intern_box">
+                    <input type="checkbox" id="intern1" name="intern1" />
+                    <label for="intern1">Rafael Olegario Bisoffi</label>
+                  </div>
+                  <div class="intern_box">
+                    <input type="checkbox" id="intern2" name="intern2" />
+                    <label for="intern2">João da Silva Carvalho</label>
+                  </div>
+                  <div class="intern_box">
+                    <input type="checkbox" id="intern3" name="intern3" />
+                    <label for="intern3">Maria Clara Santos</label>
+                  </div>
+                  <div class="intern_box">
+                    <input type="checkbox" id="intern4" name="intern4" />
+                    <label for="intern4">Ana Beatriz Oliveira</label>
+                  </div>
+                </div>
+                  
+                </div>
+                
+              </div>
+
+              <button type="submit" class="submit-button">Criar</button>
+            </form>
+          </div> -->
         <!-- FIM TELA DE CRIAR ATIVIDADE -->
 
         <!-- VISUALIZAR ESTAGIRIO -->
@@ -341,13 +400,12 @@
             </div>
           </section>
         </div> -->
-        
-           <!-- FIM VISUALIZAR ESTAGIARIO -->
+        <!-- FIM VISUALIZAR ESTAGIARIO -->
       </div>
     </main>
     <footer>
       <p>
-        <i class="fa-solid fa-copyright"></i> Desenvolvido por Stage manager
+        <i class="fa-solid fa-copyright"></i> Desenvolvido por Intern manager
         team - 2025
       </p>
     </footer>
