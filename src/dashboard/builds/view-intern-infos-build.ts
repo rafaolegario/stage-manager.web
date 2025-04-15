@@ -3,6 +3,7 @@ import { address } from "../../@types/address";
 import { Intern } from "../../@types/intern";
 import { GetAddress } from "../../http/get-address";
 import { GetInternActivities } from "../../http/get-intern-activites";
+import { deleteActivityController } from "../controllers/delete-activity-controller";
 
 export async function viewInternInfos(intern: Intern){
   const activities : activity[] = await GetInternActivities(intern.id)
@@ -134,9 +135,17 @@ export async function viewInternInfos(intern: Intern){
   
       const button = document.createElement('button')
       button.textContent = 'Avaliar'
+      const trashBtn = document.createElement('button')
+      trashBtn.textContent = 'Excluir'
+      trashBtn.style.backgroundColor = "red"
+
+      trashBtn.addEventListener('click', ()=>{
+        deleteActivityController(act.id, intern)
+      })
   
       actions.appendChild(eyeIcon)
       actions.appendChild(button)
+      actions.appendChild(trashBtn)
   
       activityDiv.appendChild(p1)
       activityDiv.appendChild(p2)
