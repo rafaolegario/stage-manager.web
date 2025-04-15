@@ -18,7 +18,7 @@ export async function GetFormDataToCreateIntern() {
     const formData = new FormData(form)
 
     const data: InternDataInput = ValidateInternFields(formData)
-    ValidateDate({ startDate: data.startDate, endDate: data.endDate })
+    ValidateDate({ startDate: data.startDate.toISOString(), endDate: data.endDate.toISOString() })
 
     await CreateIntern(data)
     ToastfyPopUp('Estagiário criado com sucesso!', 'green')
