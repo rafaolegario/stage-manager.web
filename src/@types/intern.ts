@@ -34,4 +34,9 @@ export interface InternDataInput {
   getOutHour: string
   startDate: Date
   endDate: Date
+  city: string
+  cep: string
+  street: string
+  neighborhood: string
+  houseNumber: string
 }
