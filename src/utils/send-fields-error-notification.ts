@@ -2,7 +2,7 @@ import { ZodError } from "zod";
 import { ToastfyPopUp } from "./toastfy-popup";
 
 const parseData : { [key: string]: string } = {
-    name: 'Nome',  
+    name: 'Nome ',  
     age: 'Idade',  
     cpf: 'Cpf',  
     phone: 'Telefone',  
@@ -20,7 +20,11 @@ const parseData : { [key: string]: string } = {
     street: 'Rua', 
     neighborhood: 'Bairro', 
     gender: 'Gênero', 
-    houseNumber: 'Número da Casa' 
+    houseNumber: 'Número da Casa',
+    title: 'Título',
+    due_date: 'Data de Entrega',
+    description: 'Descrição',
+    internIds: 'Estagiários',
   };
 
 export function sendFieldsErrorNotification(error: ZodError){
