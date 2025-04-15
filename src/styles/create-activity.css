@@ -1,0 +1,105 @@
+.create-activity{
+  width: 100%;
+  padding: 20px;
+}
+
+.create-activity button{
+  width: 100%;
+
+}
+
+.interns_choose {
+  margin-top: 20px;
+}
+
+.interns_choose h3 {
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.interns_checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.intern_box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--white);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.intern_box:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.intern_box input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--white);
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.intern_box input[type="checkbox"]:checked {
+  background-color: rgb(104, 104, 250);
+  border-color: rgb(104, 104, 250);
+}
+
+.intern_box input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  top: 2px;
+  left: 6px;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+textarea{
+  width: 100%;
+  height: 250px;
+  padding: 10px;
+  outline: none;
+}
+
+.intern_box input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+.intern_box label {
+  font-size: 14px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .interns_checkbox {
+    gap: 10px;
+  }
+
+  .intern_box {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .intern_box {
+    flex: 1 1 100%;
+  }
+}
