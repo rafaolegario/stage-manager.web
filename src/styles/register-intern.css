@@ -60,7 +60,7 @@ header h2 {
     width: 100%; /* Ocupa 100% da largura */
     position: relative;
     cursor: pointer; /* Muda o cursor para pointer */
-    z-index: 999;
+    z-index: 997;
 }
 
 /* Estilo para o ícone de calendário e relógio */
