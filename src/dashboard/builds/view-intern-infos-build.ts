@@ -1,5 +1,7 @@
 import { activity } from "../../@types/activity";
+import { address } from "../../@types/address";
 import { Intern } from "../../@types/intern";
+import { GetAddress } from "../../http/get-address";
 import { GetInternActivities } from "../../http/get-intern-activites";
 
 export async function viewInternInfos(intern: Intern){
@@ -57,12 +59,14 @@ export async function viewInternInfos(intern: Intern){
     { label: 'Telefone', value: intern.phone }
   ]))
 
+  const Address : address = await GetAddress(intern.id)
+
   internSection.appendChild(createCard('Endereço', [
-    { label: 'Rua', value: 'Rua das Colinas' },
-    { label: 'Bairro', value: 'Bairro Exemplo' },
-    { label: 'Cidade', value: 'São Paulo' },
-    { label: 'CEP', value: '12.345.678' },
-    { label: 'Número', value: '1234' }
+    { label: 'Rua', value: Address.street },
+    { label: 'Bairro', value: Address.neighborhood },
+    { label: 'Cidade', value: Address.city },
+    { label: 'CEP', value: Address.cep },
+    { label: 'Número', value: Address.houseNumber }
   ]))
 
   internSection.appendChild(createCard('Empresa', [
