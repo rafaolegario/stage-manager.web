@@ -67,4 +67,14 @@ export const interns: Intern[] = [
 
 export const activities: activity[] = [] 
 
-export const Address: address[] = []
+export const Address: address[] = [
+  {
+    id: 'ADDR001',
+    city: 'São Paulo',
+    cep: '01000-000',
+    street: 'Rua A',
+    houseNumber: '123',
+    neighborhood: 'Centro',
+    internId: ['INT001'],
+  }
+]
