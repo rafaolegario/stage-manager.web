@@ -59,7 +59,7 @@ main {
     display: flex; /* Usa flexbox para organizar os elementos */
     cursor: pointer; /* Muda o cursor para pointer ao passar o mouse */
     align-items: center; /* Centraliza os elementos verticalmente */
-    gap: 15px; /* Adiciona espaçamento entre os elementos */
+    gap: 10px; /* Adiciona espaçamento entre os elementos */
     color: rgb(214, 194, 194); /* Define a cor do texto */
     padding: 1px; /* Adiciona um pequeno espaçamento interno */
 }
