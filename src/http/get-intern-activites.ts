@@ -1,9 +1,10 @@
-import { activity } from "../@types/activity"
+import { activities } from "../FakeDatabase"
 
 
 
 export async function GetInternActivities(id:string) {
-  // conexão HTTP
-  const activities:activity[] = []
-  return activities
+  const InternActivities = activities.filter((item) =>
+    item.internIds.includes(id),
+  )
+  return InternActivities
 }
