@@ -76,5 +76,23 @@ export const Address: address[] = [
     houseNumber: '123',
     neighborhood: 'Centro',
     internId: ['INT001'],
+  },
+  {
+    id: 'ADDR001',
+    city: 'São Paulo',
+    cep: '01000-000',
+    street: 'Rua A',
+    houseNumber: '123',
+    neighborhood: 'Centro',
+    internId: ['INT002'],
+  },
+  {
+    id: 'ADDR001',
+    city: 'São Paulo',
+    cep: '01000-000',
+    street: 'Rua A',
+    houseNumber: '123',
+    neighborhood: 'Centro',
+    internId: ['INT003'],
   }
 ]
