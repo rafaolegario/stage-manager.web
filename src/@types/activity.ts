@@ -4,8 +4,10 @@ export interface activity {
   dueDate: Date
   status:  'finished' | 'unfinished'
   description: string
-  score: number
-  internIds: string[]
+  internsIdScore: {
+    id: string
+    score: number
+  }[]
 }
 
 export interface activityInput {

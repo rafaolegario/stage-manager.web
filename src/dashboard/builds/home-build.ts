@@ -1,9 +1,9 @@
 import { VerifyStatus, StatusData } from '../../utils/VerifyStatus'
-import { Intern } from '../../@types/intern'
+import { InternWithAddress } from '../../@types/intern'
 import { viewInternInfos } from './view-intern-infos-build'
 
 export async function buildHome(
-  data: Intern[],
+  data: InternWithAddress[],
   search?: boolean,
 ): Promise<void> {
   search = search ?? false
@@ -42,7 +42,8 @@ export async function buildHome(
     internsDiv.style.color = '#fff'
     internsDiv.innerText = 'Nenhum estagiário cadastrado!'
   } else {
-    data.forEach((intern: Intern) => {
+    data.forEach((item) => {
+      const intern = item.intern
       const internDiv: HTMLDivElement = document.createElement('div')
       internDiv.className = 'intern'
 
@@ -97,8 +98,8 @@ export async function buildHome(
 
       const eyeIcon: HTMLElement = document.createElement('i')
       eyeIcon.className = 'fa-solid fa-eye'
-      eyeIcon.addEventListener('click', ()=>{
-        viewInternInfos(intern)
+      eyeIcon.addEventListener('click', () => {
+        viewInternInfos(item)
       })
       internDiv.appendChild(eyeIcon)
 

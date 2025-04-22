@@ -8,8 +8,7 @@ import { CreateActivity } from '../../http/create-activity'
 
 export async function GetFormDataToCreateActivity() {
   try {
-    const form: HTMLFormElement | null =
-      document.querySelector('#create-form')
+    const form: HTMLFormElement | null = document.querySelector('#create-form')
 
     if (!form) {
       return
@@ -25,14 +24,10 @@ export async function GetFormDataToCreateActivity() {
     ToastfyPopUp('Atividade criada com sucesso!', 'green')
     form.reset()
   } catch (error) {
-
     if (error instanceof ZodError) {
-      sendFieldsErrorNotification(error);
+      sendFieldsErrorNotification(error)
+    } else if (error instanceof Error) {
+      ToastfyPopUp('Erro ao criar atividade, tente mais tarde!', 'blue')
     }
-
-    else if(error instanceof Error){
-      ToastfyPopUp(error.message,'blue')
-    }
- 
   }
 }

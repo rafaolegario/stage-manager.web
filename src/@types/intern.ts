@@ -1,4 +1,6 @@
-export interface Intern {
+import { addressDTO } from "./address"
+
+export interface InternDTO {
   id: string
   name: string
   gender: string
@@ -39,4 +41,9 @@ export interface InternDataInput {
   street: string
   neighborhood: string
   houseNumber: string
+}
+
+export interface InternWithAddress {
+  intern: InternDTO
+  internAddress: addressDTO 
 }

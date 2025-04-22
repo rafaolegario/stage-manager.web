@@ -1,7 +1,7 @@
-import { Intern } from "../../@types/intern";
+import {  InternWithAddress } from "../../@types/intern";
 import { GetFormDataToCreateActivity } from "../controllers/get-form-data-to-create-activity";
 
-export async function createActivityBuild(interns: Intern[]) {
+export async function createActivityBuild(interns: InternWithAddress[]) {
   const dash: any = document.querySelector('.dashboard')
 
   dash.innerHTML = ''
@@ -84,7 +84,21 @@ export async function createActivityBuild(interns: Intern[]) {
   const internsCheckbox = document.createElement('div');
   internsCheckbox.className = 'interns_checkbox';
 
-  interns.forEach((intern) => {
+  if(interns === undefined || interns.length === 0) {
+     const internBox = document.createElement('div');
+    internBox.className = 'intern_box';
+
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Cadastre estagiários para criar atividades';
+    paragraph.style.color = 'white';
+    internBox.appendChild(paragraph);
+
+
+    internsCheckbox.appendChild(internBox);
+  }else{
+
+  interns.forEach((item) => {
+    const intern = item.intern;
     const internBox = document.createElement('div');
     internBox.className = 'intern_box';
 
@@ -102,7 +116,7 @@ export async function createActivityBuild(interns: Intern[]) {
 
     internsCheckbox.appendChild(internBox);
   });
-
+  }
   internsChoose.appendChild(internsCheckbox);
   form.appendChild(internsChoose);
 

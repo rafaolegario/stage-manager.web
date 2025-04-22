@@ -1,14 +1,14 @@
-import { activity } from "../../@types/activity";
-import { address } from "../../@types/address";
-import { Intern } from "../../@types/intern";
-import { GetAddress } from "../../http/get-address";
-import { GetInternActivities } from "../../http/get-intern-activites";
-import { deleteActivityController } from "../controllers/delete-activity-controller";
+import { activity } from '../../@types/activity'
+import { InternWithAddress } from '../../@types/intern'
+import { GetInternActivities } from '../../http/get-intern-activites'
+import { deleteActivityController } from '../controllers/delete-activity-controller'
 
-export async function viewInternInfos(intern: Intern){
-  const activities : activity[] = await GetInternActivities(intern.id)
+export async function viewInternInfos(Intern: InternWithAddress) {
+  const activities: activity[] = await GetInternActivities(Intern.intern.id)
   const dash: any = document.querySelector('.dashboard')
 
+  const intern = Intern.intern
+  const Address = Intern.internAddress
   dash.innerHTML = ''
 
   const InfoDiv = document.createElement('div')
@@ -32,7 +32,10 @@ export async function viewInternInfos(intern: Intern){
   const internSection = document.createElement('section')
   internSection.className = 'intern-details'
 
-  const createCard = (title: string, fields: { label: string, value: string }[]) => {
+  const createCard = (
+    title: string,
+    fields: { label: string; value: string }[],
+  ) => {
     const card = document.createElement('div')
     card.className = 'card'
 
@@ -52,44 +55,51 @@ export async function viewInternInfos(intern: Intern){
     return card
   }
 
-  internSection.appendChild(createCard('Dados Pessoais', [
-    { label: 'Nome', value: intern.name },
-    { label: 'Idade', value: String(intern.age) },
-    { label: 'Gênero', value: intern.gender }, 
-    { label: 'CPF', value: intern.cpf },
-    { label: 'Telefone', value: intern.phone }
-  ]))
+  internSection.appendChild(
+    createCard('Dados Pessoais', [
+      { label: 'Nome', value: intern.name },
+      { label: 'Idade', value: String(intern.age) },
+      { label: 'Gênero', value: intern.gender },
+      { label: 'CPF', value: intern.cpf },
+      { label: 'Telefone', value: intern.phone },
+      { label: 'Email', value: intern.email },
+    ]),
+  )
 
-  const Address : address = await GetAddress(intern.id)
+  internSection.appendChild(
+    createCard('Endereço', [
+      { label: 'Rua', value: Address.street },
+      { label: 'Bairro', value: Address.neighborhood },
+      { label: 'Cidade', value: Address.city },
+      { label: 'CEP', value: Address.cep },
+      { label: 'Número', value: Address.houseNumber },
+    ]),
+  )
 
-  internSection.appendChild(createCard('Endereço', [
-    { label: 'Rua', value: Address.street },
-    { label: 'Bairro', value: Address.neighborhood },
-    { label: 'Cidade', value: Address.city },
-    { label: 'CEP', value: Address.cep },
-    { label: 'Número', value: Address.houseNumber }
-  ]))
+  internSection.appendChild(
+    createCard('Empresa', [
+      { label: 'Função', value: intern.role },
+      { label: 'Início', value: new Date(intern.startDate).toLocaleDateString() },
+      { label: 'Término', value: new Date(intern.endDate).toLocaleDateString() },
+      { label: 'Entrada', value: intern.getInHour },
+      { label: 'Saída', value: intern.getOutHour },
+      { label: 'Salário', value: `R$${intern.salary.toFixed(2)}` },
+    ]),
+  )
 
-  internSection.appendChild(createCard('Empresa', [
-    { label: 'Função', value: intern.role },
-    { label: 'Início', value: intern.startDate.toLocaleDateString('pt-BR') },
-    { label: 'Término', value: intern.endDate.toLocaleDateString('pt-BR') },
-    { label: 'Entrada', value: intern.getInHour },
-    { label: 'Saída', value: intern.getOutHour },
-    { label: 'Salário', value: `R$${intern.salary.toFixed(2)}` }
-  ]))
+  internSection.appendChild(
+    createCard('Status', [
+      { label: 'Atrasos', value: String(intern.delayed) },
+      { label: 'Faltas', value: String(intern.absent) },
+    ]),
+  )
 
-  internSection.appendChild(createCard('Status', [
-    { label: 'Atrasos', value: String(intern.delayed) },
-    { label: 'Faltas', value: String(intern.absent) },
-    { label: 'Atividades pendentes', value: '2' },
-    { label: 'Concluídas', value: '5' }
-  ]))
-
-  internSection.appendChild(createCard('Curso', [
-    { label: 'Curso', value: intern.course },
-    { label: 'Universidade', value: intern.university }
-  ]))
+  internSection.appendChild(
+    createCard('Curso', [
+      { label: 'Curso', value: intern.course },
+      { label: 'Universidade', value: intern.university },
+    ]),
+  )
 
   const activityCard = document.createElement('div')
   activityCard.className = 'card'
@@ -101,57 +111,57 @@ export async function viewInternInfos(intern: Intern){
   activitiesTitle.textContent = 'Atividades'
   activitiesContainer.append(activitiesTitle)
 
-  if(activities.length === 0){
+  if (activities.length === 0) {
     const activitiesInfo = document.createElement('p')
     activitiesTitle.textContent = 'Nenhuma atividade'
     activitiesContainer.append(activitiesInfo)
-  }else{
+  } else {
     for (const act of activities) {
       const activityDiv = document.createElement('div')
       activityDiv.className = 'activity'
-  
+
       const p1 = document.createElement('p')
       const p1Strong = document.createElement('strong')
       p1Strong.textContent = act.title
       p1.appendChild(p1Strong)
-  
+
       const p2 = document.createElement('p')
-      p2.textContent = `Entrega: ${act.dueDate.toLocaleDateString('pt-BR')}`
-  
+      p2.textContent = `Entrega: ${new Date(act.dueDate).toLocaleDateString()}`
+
       const p3 = document.createElement('p')
       let status = ''
-      if(act.status === 'unfinished'){
+      if (act.status === 'unfinished') {
         status = 'Pendente'
-      }else{
+      } else {
         status = 'Concluída'
       }
       p3.textContent = `Status: ${status}`
-  
+
       const actions = document.createElement('div')
       actions.className = 'actions'
-  
+
       const eyeIcon = document.createElement('i')
       eyeIcon.className = 'fa-solid fa-eye'
-  
+
       const button = document.createElement('button')
       button.textContent = 'Avaliar'
       const trashBtn = document.createElement('button')
       trashBtn.textContent = 'Excluir'
-      trashBtn.style.backgroundColor = "red"
+      trashBtn.style.backgroundColor = 'red'
 
-      trashBtn.addEventListener('click', ()=>{
+      trashBtn.addEventListener('click', () => {
         deleteActivityController(act.id, intern)
       })
-  
+
       actions.appendChild(eyeIcon)
       actions.appendChild(button)
       actions.appendChild(trashBtn)
-  
+
       activityDiv.appendChild(p1)
       activityDiv.appendChild(p2)
       activityDiv.appendChild(p3)
       activityDiv.appendChild(actions)
-  
+
       activitiesContainer.appendChild(activityDiv)
     }
   }

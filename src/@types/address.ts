@@ -1,4 +1,4 @@
-export interface address {
+export interface addressDTO {
   id?: string
   city: string
   cep: string
@@ -7,4 +7,3 @@ export interface address {
   houseNumber: string
   internId: string[]
 }
-

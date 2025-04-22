@@ -36,14 +36,14 @@ export function ValidateInternFields(data: FormData): InternDataInput {
     role: z.string().min(2),
     getInHour: z.string(),
     getOutHour: z.string(),
-    startDate: z.string().transform((val) => new Date(val)),
-    endDate: z.string().transform((val) => new Date(val)),
+    startDate: z.string().transform((val) => new Date(val)),
+    endDate: z.string().transform((val) => new Date(val)),
     city: z.string().min(2),
     cep: z.string().min(9).max(9),
     street: z.string().min(3),
     neighborhood: z.string().min(3),
     gender: z.string(),
-    houseNumber: z.coerce.number().min(1),
+    houseNumber: z.string().min(1),
   })
 
   const validateData = InternFieldsSchema.parse(dataFormat)

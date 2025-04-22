@@ -1,13 +1,20 @@
 import { activityInput } from '../@types/activity'
-import { activities} from '../FakeDatabase'
 
 export async function CreateActivity(data: activityInput) {
-  console.log('data', data)
-  activities.push({
-    id: (Math.random() * 200).toString(),
-    ...data,
-    score: 0,
-    status: 'unfinished',
-   
+  const response = await fetch('http://localhost:3333/activitys/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
   })
+
+  const result = await response.json()
+
+ 
+  if (!response.ok) {
+    throw new Error('Erro ao criar atividade, tente mais tarde!')
+  }
+  console.log(result.error)
+  return result
 }

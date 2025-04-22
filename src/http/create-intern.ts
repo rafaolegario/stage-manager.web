@@ -1,22 +1,22 @@
 import { InternDataInput } from '../@types/intern'
-import { Address, interns } from '../FakeDatabase'
 
 export async function CreateIntern(data: InternDataInput) {
-  const id = (Math.random() * 200).toString()
-  interns.push({
-    id,
-    ...data,
-    onWork: false,
-    delayed: 0,
-    absent: 0,
+  const response = await fetch('http://localhost:3333/interns/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
   })
 
-  Address.push({
-    id: (Math.random() * 660).toString(),
-    city: data.city,
-    cep: data.cep,
-    street: data.street,
-    neighborhood: data.neighborhood,
-    houseNumber: data.houseNumber,
-    internId: [id],})
+  const result = await response.json()
+
+ 
+  if (!response.ok) {
+    if (response.status === 409) {
+      throw new Error('Cpf ou email já cadastrados.')
+    }
+    throw new Error('Erro ao criar estagiário, tente mais tarde!')
+  }
+  return result
 }
