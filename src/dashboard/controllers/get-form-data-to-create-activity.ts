@@ -18,7 +18,7 @@ export async function GetFormDataToCreateActivity() {
 
     const date = new Date().toISOString()
     const data: activityInput = ValidateActivityFields(formData)
-    ValidateDate({ startDate: date, endDate: data.dueDate.toISOString() })
+    await ValidateDate({ startDate: date, endDate: data.dueDate.toISOString() })
 
     await CreateActivity(data)
     ToastfyPopUp('Atividade criada com sucesso!', 'green')

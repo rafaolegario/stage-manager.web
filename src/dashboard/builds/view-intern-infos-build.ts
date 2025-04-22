@@ -4,7 +4,7 @@ import { GetInternActivities } from '../../http/get-intern-activites'
 import { deleteActivityController } from '../controllers/delete-activity-controller'
 
 export async function viewInternInfos(Intern: InternWithAddress) {
-  const activities: activity[] = await GetInternActivities(Intern.intern.id)
+  const FetchActivities: activity[] = await GetInternActivities(Intern.intern.id)
   const dash: any = document.querySelector('.dashboard')
 
   const intern = Intern.intern
@@ -110,13 +110,14 @@ export async function viewInternInfos(Intern: InternWithAddress) {
   const activitiesTitle = document.createElement('h3')
   activitiesTitle.textContent = 'Atividades'
   activitiesContainer.append(activitiesTitle)
+  console.log(FetchActivities)
 
-  if (activities.length === 0) {
+  if (FetchActivities.length === 0) {
     const activitiesInfo = document.createElement('p')
     activitiesTitle.textContent = 'Nenhuma atividade'
     activitiesContainer.append(activitiesInfo)
   } else {
-    for (const act of activities) {
+    for (const act of FetchActivities) {
       const activityDiv = document.createElement('div')
       activityDiv.className = 'activity'
 

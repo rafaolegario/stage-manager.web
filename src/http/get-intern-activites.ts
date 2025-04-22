@@ -1,10 +1,12 @@
-import { activities } from "../FakeDatabase"
-
-
 
 export async function GetInternActivities(id:string) {
-  const InternActivities = activities.filter((item) =>
-    item.internIds.includes(id),
-  )
-  return InternActivities
+  const response = await fetch(`http://localhost:3333/activities/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  const data = await response.json()
+  return data.Activities
 }

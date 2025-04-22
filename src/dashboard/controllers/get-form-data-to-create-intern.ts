@@ -18,7 +18,7 @@ export async function GetFormDataToCreateIntern() {
     const formData = new FormData(form)
 
     const data: InternDataInput = ValidateInternFields(formData)
-    ValidateDate({
+    await ValidateDate({
       startDate: data.startDate.toISOString(),
       endDate: data.endDate.toISOString(),
     })
