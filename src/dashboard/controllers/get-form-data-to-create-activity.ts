@@ -27,7 +27,8 @@ export async function GetFormDataToCreateActivity() {
     if (error instanceof ZodError) {
       sendFieldsErrorNotification(error)
     } else if (error instanceof Error) {
-      ToastfyPopUp('Erro ao criar atividade, tente mais tarde!', 'blue')
+      ToastfyPopUp(error.message, 'blue')
+      // 'Erro ao criar atividade, tente mais tarde!'
     }
   }
 }

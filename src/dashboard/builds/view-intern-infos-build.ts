@@ -151,7 +151,7 @@ export async function viewInternInfos(Intern: InternWithAddress) {
       trashBtn.style.backgroundColor = 'red'
 
       trashBtn.addEventListener('click', () => {
-        deleteActivityController(act.id, intern)
+        deleteActivityController(act.id, Intern)
       })
 
       actions.appendChild(eyeIcon)

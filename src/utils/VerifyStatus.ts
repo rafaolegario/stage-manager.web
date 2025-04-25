@@ -18,7 +18,7 @@ interface VerifyStatusResult {
 }
 
 interface VerifyStatusParams {
-  status: boolean
+  status: number
   getIn: string
   getOut: string
 }
@@ -58,7 +58,7 @@ export function VerifyStatus({
 
   const delayMinutes = now.diff(GetInHour, 'minute')
 
-  if (status === false && delayMinutes > 5 && delayMinutes <= 20) {
+  if (status === 0 && delayMinutes > 5 && delayMinutes <= 20) {
     return {
       icon: statusIcons.yellow,
       situation: statusSituation.delayed,
@@ -74,7 +74,7 @@ export function VerifyStatus({
     }
   }
 
-  if (status === false) {
+  if (status === 0) {
     return {
       icon: statusIcons.gray,
       situation: statusSituation.absent,

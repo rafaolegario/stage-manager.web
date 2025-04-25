@@ -1,7 +1,7 @@
 import { InternDataInput } from '../@types/intern'
 
 export async function CreateIntern(data: InternDataInput) {
-  const response = await fetch('http://localhost:3333/interns/create', {
+  const response = await fetch('http://localhost:1880/interns/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -11,7 +11,6 @@ export async function CreateIntern(data: InternDataInput) {
 
   const result = await response.json()
 
- 
   if (!response.ok) {
     if (response.status === 409) {
       throw new Error('Cpf ou email já cadastrados.')
