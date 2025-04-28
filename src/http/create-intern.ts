@@ -1,7 +1,8 @@
 import { InternDataInput } from '../@types/intern'
+import { url } from './url'
 
 export async function CreateIntern(data: InternDataInput) {
-  const response = await fetch('http://localhost:1880/interns/create', {
+  const response = await fetch(`${url}/interns/create`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

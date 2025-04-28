@@ -1,7 +1,8 @@
 import { InternWithAddress } from '../@types/intern'
+import { url } from './url'
 
 export async function GetAllInterns(): Promise<InternWithAddress[]> {
-  const response = await fetch('http://localhost:1880/interns', {
+  const response = await fetch(`${url}/interns`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
