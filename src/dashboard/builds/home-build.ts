@@ -84,7 +84,7 @@ export async function buildHome(
         status: intern.onWork,
         getIn: intern.getInHour,
         getOut: intern.getOutHour,
-      })
+      }, intern.id)
 
       const statusIcon: HTMLElement = document.createElement('i')
       statusIcon.className = statusData.icon
