@@ -1,10 +1,14 @@
-import { Intern } from '../@types/intern'
-import { interns } from '../FakeDatabase'
+import { url } from "./url"
 
-export async function GetSearchInterns(query: string): Promise<Intern[]> {
+export async function GetSearchInterns(query: string) {
   // conexão HTTP
-  const data = interns.filter((item) =>
-    item.name.toLowerCase().includes(query.toLowerCase()),
-  )
-  return data
+  const response = await fetch(`${url}/interns/search/${query}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  const data = await response.json()
+  return data.interns
 }
