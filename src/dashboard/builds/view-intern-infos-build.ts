@@ -84,12 +84,13 @@ export async function viewInternInfos(Intern: InternWithAddress) {
       { label: 'Entrada', value: intern.getInHour },
       { label: 'Saída', value: intern.getOutHour },
       { label: 'Salário', value: `R$${intern.salary.toFixed(2)}` },
+      { label: 'Cartão de acesso', value: intern.rfIdCard }
     ]),
   )
 
   internSection.appendChild(
     createCard('Status', [
-      { label: 'Atrasos', value: String(intern.delayed) },
+      { label: 'Atrasos', value: String(intern.lateness) },
       { label: 'Faltas', value: String(intern.absent) },
     ]),
   )
