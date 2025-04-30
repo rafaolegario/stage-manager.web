@@ -12,10 +12,8 @@ export async function CreateActivity(data: activityInput) {
 
   const result = await response.json()
 
-  console.log(result)
   if (!response.ok) {
-    throw new Error(result)
-    // 'Erro ao criar atividade, tente mais tarde!'
+    throw new Error('Erro ao criar atividade, tente mais tarde!')
   }
 
   return result
