@@ -28,7 +28,6 @@ export async function GetFormDataToCreateActivity() {
       sendFieldsErrorNotification(error)
     } else if (error instanceof Error) {
       ToastfyPopUp(error.message, 'blue')
-      // 'Erro ao criar atividade, tente mais tarde!'
     }
   }
 }
