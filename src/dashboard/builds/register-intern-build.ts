@@ -1,4 +1,4 @@
-import { CpfMask } from '../../utils/masks'
+import { CepMask, CpfMask, PhoneMask } from '../../utils/masks'
 import { GetFormDataToCreateIntern } from '../controllers/get-form-data-to-create-intern'
 
 export function buildRegisterIntern() {
@@ -118,7 +118,11 @@ export function buildRegisterIntern() {
   )
   form.appendChild(createWrap(nameField, emailField))
 
-  const cepField = createInputField('text', 'cep', 'Cep', '12.345.678', true, 9)
+  const cepField = createInputField('text', 'cep', 'Cep', '12345-678', true, 9)
+  const CepInputElement = cepField.querySelector('input') as HTMLInputElement
+  CepInputElement.addEventListener('input', ()=>{
+    CepInputElement.value = CepMask(CepInputElement.value)
+  })
   const cityField = createInputField(
     'text',
     'city',
@@ -160,6 +164,12 @@ export function buildRegisterIntern() {
     true,
     14,
   )
+
+  const PhoneInputElement = phoneField.querySelector('input') as HTMLInputElement
+  PhoneInputElement.addEventListener('input', ()=>{
+    PhoneInputElement.value = PhoneMask(PhoneInputElement.value)
+  })
+
   const roleField = createInputField(
     'text',
     'role',
