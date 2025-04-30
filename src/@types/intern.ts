@@ -12,13 +12,14 @@ export interface InternDTO {
   university: string
   salary: number
   role: string
-  onWork: boolean
+  onWork: number
   getInHour: string
   getOutHour: string
   startDate: Date
   endDate: Date
-  delayed: number
+  lateness: number
   absent: number
+  rfIdCard: string
 }
 
 export interface InternDataInput {
