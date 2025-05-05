@@ -14,6 +14,6 @@ export async function deleteActivityController(activityId: string, Intern: Inter
         ToastfyPopUp('Atividade excluida com sucesso!', 'green')
         viewInternInfos(Intern)
     } catch (error) {
-        ToastfyPopUp('Erro ao exluir atividade!, tente novamente mais tarde.', 'red')
+        ToastfyPopUp('Erro ao excluir atividade!, tente novamente mais tarde.', 'red')
     }
 }

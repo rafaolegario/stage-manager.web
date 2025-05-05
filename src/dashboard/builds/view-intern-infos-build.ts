@@ -2,11 +2,11 @@ import { activity } from '../../@types/activity'
 import { InternWithAddress } from '../../@types/intern'
 import { GetInternActivities } from '../../http/get-intern-activites'
 import { deleteActivityController } from '../controllers/delete-activity-controller'
+import { RateModal } from './rate-modal'
 
 export async function viewInternInfos(Intern: InternWithAddress) {
   const FetchActivities: activity[] = await GetInternActivities(Intern.intern.id)
   const dash: any = document.querySelector('.dashboard')
-
   const intern = Intern.intern
   const Address = Intern.internAddress
   dash.innerHTML = ''
@@ -111,7 +111,6 @@ export async function viewInternInfos(Intern: InternWithAddress) {
   const activitiesTitle = document.createElement('h3')
   activitiesTitle.textContent = 'Atividades'
   activitiesContainer.append(activitiesTitle)
-  console.log(FetchActivities)
 
   if (FetchActivities.length === 0) {
     const activitiesInfo = document.createElement('p')
@@ -132,7 +131,7 @@ export async function viewInternInfos(Intern: InternWithAddress) {
 
       const p3 = document.createElement('p')
       let status = ''
-      if (act.status === 'unfinished') {
+      if (act.internsIdScore[0].status === 'unfinished') {
         status = 'Pendente'
       } else {
         status = 'Concluída'
@@ -144,9 +143,13 @@ export async function viewInternInfos(Intern: InternWithAddress) {
 
       const eyeIcon = document.createElement('i')
       eyeIcon.className = 'fa-solid fa-eye'
-
+      
       const button = document.createElement('button')
       button.textContent = 'Avaliar'
+      button.addEventListener('click', ()=>{
+        RateModal(act)
+      })
+    
       const trashBtn = document.createElement('button')
       trashBtn.textContent = 'Excluir'
       trashBtn.style.backgroundColor = 'red'
@@ -156,7 +159,9 @@ export async function viewInternInfos(Intern: InternWithAddress) {
       })
 
       actions.appendChild(eyeIcon)
+      if(act.internsIdScore[0].status === 'unfinished'){
       actions.appendChild(button)
+      }
       actions.appendChild(trashBtn)
 
       activityDiv.appendChild(p1)
