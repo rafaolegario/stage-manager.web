@@ -1,7 +1,7 @@
 import { activity } from '../../@types/activity'
 import { InternWithAddress } from '../../@types/intern'
 import { GetInternActivities } from '../../http/get-intern-activites'
-import { deleteActivityController } from '../controllers/delete-activity-controller'
+import { DeleteModal } from './delete-modal'
 import { RateModal } from './rate-modal'
 
 export async function viewInternInfos(Intern: InternWithAddress) {
@@ -147,7 +147,7 @@ export async function viewInternInfos(Intern: InternWithAddress) {
       const button = document.createElement('button')
       button.textContent = 'Avaliar'
       button.addEventListener('click', ()=>{
-        RateModal(act)
+        RateModal(act, Intern)
       })
     
       const trashBtn = document.createElement('button')
@@ -155,7 +155,7 @@ export async function viewInternInfos(Intern: InternWithAddress) {
       trashBtn.style.backgroundColor = 'red'
 
       trashBtn.addEventListener('click', () => {
-        deleteActivityController(act.id, Intern)
+        DeleteModal(act, Intern)
       })
 
       actions.appendChild(eyeIcon)

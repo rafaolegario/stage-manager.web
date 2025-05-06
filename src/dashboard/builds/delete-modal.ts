@@ -1,9 +1,8 @@
-import { number } from "zod"
 import { activity } from "../../@types/activity"
 import { InternWithAddress } from "../../@types/intern"
-import { RateModalController } from "../controllers/get-rate-modal"
+import { deleteActivityController } from "../controllers/delete-activity-controller"
 
-    export function RateModal(activity: activity, intern: InternWithAddress) {
+    export function DeleteModal(activity: activity, intern:InternWithAddress) {
         if (document.querySelector('.rate-modal')) return
       
         const modal = document.createElement('div')
@@ -13,35 +12,20 @@ import { RateModalController } from "../controllers/get-rate-modal"
         modalContent.className = 'modal-content'
       
         const title = document.createElement('h3')
-        title.textContent = 'Avaliar Atividade'
+        title.textContent = 'Excluir atividade'
       
         const activityTitle = document.createElement('p')
         const activityStrong = document.createElement('strong')
         activityStrong.textContent = activity.title
         activityTitle.appendChild(activityStrong)
       
-        const dueDate = document.createElement('p')
-        dueDate.textContent = `Entrega: ${new Date(activity.dueDate).toLocaleDateString()}`
-      
-        const status = document.createElement('p')
-        status.textContent = `Status: ${activity.internsIdScore[0].status === 'unfinished' ? 'Pendente' : 'Concluída'}`
-      
-        const labelScore = document.createElement('label')
-        labelScore.htmlFor = 'score'
-        labelScore.textContent = 'Nota (0 a 10):'
-      
-        const inputScore = document.createElement('input')
-        inputScore.type = 'number'
-        inputScore.id = 'score'
-        inputScore.min = '0'
-        inputScore.max = '10'
       
         const actions = document.createElement('div')
         actions.className = 'modal-actions'
       
         const submitBtn = document.createElement('button')
         submitBtn.id = 'submitRating'
-        submitBtn.textContent = 'Salvar'
+        submitBtn.textContent = 'Confirmar'
       
         const cancelBtn = document.createElement('button')
         cancelBtn.id = 'cancelRating'
@@ -50,13 +34,12 @@ import { RateModalController } from "../controllers/get-rate-modal"
       
         cancelBtn.addEventListener('click', () => {
           modal.remove()
+          deleteActivityController(activity.id, intern, false )
         })
       
         submitBtn.addEventListener('click', () => {
-          const scoreValue = inputScore.value
-          const score = Number(scoreValue)
-          RateModalController(score, intern, activity.id)
           modal.remove()
+          deleteActivityController(activity.id, intern, true )
         })
       
         actions.appendChild(submitBtn)
@@ -64,10 +47,6 @@ import { RateModalController } from "../controllers/get-rate-modal"
       
         modalContent.appendChild(title)
         modalContent.appendChild(activityTitle)
-        modalContent.appendChild(dueDate)
-        modalContent.appendChild(status)
-        modalContent.appendChild(labelScore)
-        modalContent.appendChild(inputScore)
         modalContent.appendChild(actions)
       
         modal.appendChild(modalContent)

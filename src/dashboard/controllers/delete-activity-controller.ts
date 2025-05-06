@@ -3,10 +3,9 @@ import { deleteActivity } from "../../http/delete-activity";
 import { ToastfyPopUp } from "../../utils/toastfy-popup";
 import { viewInternInfos } from "../builds/view-intern-infos-build";
 
-export async function deleteActivityController(activityId: string, Intern: InternWithAddress) {
+export async function deleteActivityController(activityId: string, Intern: InternWithAddress, confirm: boolean) {
     try {
-        const isConfirmed = confirm('Confirmar exclusão da atividade.')
-
+        const isConfirmed = confirm
         if(!isConfirmed){
             throw new Error()
         }
