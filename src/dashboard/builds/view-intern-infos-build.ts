@@ -3,6 +3,7 @@ import { InternWithAddress } from '../../@types/intern'
 import { GetInternActivities } from '../../http/get-intern-activites'
 import { DeleteModal } from './delete-modal'
 import { RateModal } from './rate-modal'
+import { ViewModal } from './view-activity-modal'
 
 export async function viewInternInfos(Intern: InternWithAddress) {
   const FetchActivities: activity[] = await GetInternActivities(Intern.intern.id)
@@ -143,6 +144,9 @@ export async function viewInternInfos(Intern: InternWithAddress) {
 
       const eyeIcon = document.createElement('i')
       eyeIcon.className = 'fa-solid fa-eye'
+      eyeIcon.addEventListener('click', ()=>{
+        ViewModal(act)
+      })
       
       const button = document.createElement('button')
       button.textContent = 'Avaliar'

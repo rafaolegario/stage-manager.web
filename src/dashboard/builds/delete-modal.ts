@@ -34,12 +34,11 @@ import { deleteActivityController } from "../controllers/delete-activity-control
       
         cancelBtn.addEventListener('click', () => {
           modal.remove()
-          deleteActivityController(activity.id, intern, false )
         })
       
         submitBtn.addEventListener('click', () => {
           modal.remove()
-          deleteActivityController(activity.id, intern, true )
+          deleteActivityController(activity.id, intern )
         })
       
         actions.appendChild(submitBtn)
