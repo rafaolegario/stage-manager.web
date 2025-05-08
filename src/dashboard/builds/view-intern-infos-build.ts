@@ -6,7 +6,9 @@ import { RateModal } from './rate-modal'
 import { ViewModal } from './view-activity-modal'
 
 export async function viewInternInfos(Intern: InternWithAddress) {
-  const FetchActivities: activity[] = await GetInternActivities(Intern.intern.id)
+  const FetchActivities: activity[] = await GetInternActivities(
+    Intern.intern.id,
+  )
   const dash: any = document.querySelector('.dashboard')
   const intern = Intern.intern
   const Address = Intern.internAddress
@@ -80,12 +82,18 @@ export async function viewInternInfos(Intern: InternWithAddress) {
   internSection.appendChild(
     createCard('Empresa', [
       { label: 'Função', value: intern.role },
-      { label: 'Início', value: new Date(intern.startDate).toLocaleDateString() },
-      { label: 'Término', value: new Date(intern.endDate).toLocaleDateString() },
+      {
+        label: 'Início',
+        value: new Date(intern.startDate).toLocaleDateString(),
+      },
+      {
+        label: 'Término',
+        value: new Date(intern.endDate).toLocaleDateString(),
+      },
       { label: 'Entrada', value: intern.getInHour },
       { label: 'Saída', value: intern.getOutHour },
       { label: 'Salário', value: `R$${intern.salary.toFixed(2)}` },
-      { label: 'Cartão de acesso', value: intern.rfIdCard }
+      { label: 'Cartão de acesso', value: intern.rfIdCard },
     ]),
   )
 
@@ -144,16 +152,16 @@ export async function viewInternInfos(Intern: InternWithAddress) {
 
       const eyeIcon = document.createElement('i')
       eyeIcon.className = 'fa-solid fa-eye'
-      eyeIcon.addEventListener('click', ()=>{
+      eyeIcon.addEventListener('click', () => {
         ViewModal(act)
       })
-      
+
       const button = document.createElement('button')
       button.textContent = 'Avaliar'
-      button.addEventListener('click', ()=>{
+      button.addEventListener('click', () => {
         RateModal(act, Intern)
       })
-    
+
       const trashBtn = document.createElement('button')
       trashBtn.textContent = 'Excluir'
       trashBtn.style.backgroundColor = 'red'
@@ -163,8 +171,8 @@ export async function viewInternInfos(Intern: InternWithAddress) {
       })
 
       actions.appendChild(eyeIcon)
-      if(act.internsIdScore[0].status === 'unfinished'){
-      actions.appendChild(button)
+      if (act.internsIdScore[0].status === 'unfinished') {
+        actions.appendChild(button)
       }
       actions.appendChild(trashBtn)
 
