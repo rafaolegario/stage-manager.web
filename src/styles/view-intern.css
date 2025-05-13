@@ -142,6 +142,10 @@
   padding: 1.5rem;
 }
 
+#scoreChart{
+  max-height: 250px;
+}
+
 .graph h3 {
   color: #4fa9f3;
 }

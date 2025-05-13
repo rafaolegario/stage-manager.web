@@ -66,7 +66,6 @@ export async function buildRanking(
     const sorted = internWithValues.sort((a, b) => b.value - a.value);
 
     sorted.forEach(async (item, index) => {
-      console.log(item);
       const card = document.createElement("div");
       card.className = "intern";
 

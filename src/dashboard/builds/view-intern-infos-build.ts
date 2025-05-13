@@ -1,3 +1,4 @@
+import { BarController, BarElement, CategoryScale, Chart, Legend, LinearScale, LineController, LineElement, PointElement, Title, Tooltip } from 'chart.js'
 import { activity } from '../../@types/activity'
 import { InternWithAddress } from '../../@types/intern'
 import { GetInternActivities } from '../../http/get-intern-activites'
@@ -208,8 +209,75 @@ export async function viewInternInfos(Intern: InternWithAddress) {
   graphDiv.className = 'graph'
 
   const graphTitle = document.createElement('h3')
-  graphTitle.textContent = 'Análise de Frequência'
+  graphTitle.textContent = 'Análise de notas'
   graphDiv.appendChild(graphTitle)
+
+const scoreCanvas = document.createElement('canvas')
+scoreCanvas.id = 'scoreChart'
+graphDiv.appendChild(scoreCanvas)
+
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  LineController, 
+  LineElement, 
+  PointElement, 
+  Title,
+  Tooltip,
+  Legend
+);
+// Pega os títulos e notas das atividades
+const activityTitles: string[] = []
+const activityScores: number[] = []
+
+FetchActivities.forEach(act => {
+  console.log(act)
+  const score = act.internsIdScore[0]?.score
+  if (score !== undefined && score !== null) {
+    activityTitles.push(act.title)
+    activityScores.push(score)
+  }
+})
+
+console.log(activityScores)
+
+// Aguarda DOM carregar e cria o gráfico
+setTimeout(() => {
+  const ctx = document.getElementById('scoreChart') as HTMLCanvasElement
+  if (!ctx || activityScores.length === 0) return alert()
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: activityTitles,
+      datasets: [{
+        label: 'Nota da Atividade',
+        data: activityScores, // Notas
+        fill: false, // Preenchimento abaixo da linha (false significa sem preenchimento)
+        borderColor: 'rgba(255, 99, 132, 1)', // Cor da linha (mudada para vermelho)
+        borderWidth: 3, // Tamanho da linha (espessura)
+        pointBackgroundColor: 'rgba(54, 162, 235, 1)', // Cor dos pontos de dados (azul)
+        pointBorderColor: 'rgba(54, 162, 235, 1)', // Cor da borda dos pontos
+        pointBorderWidth: 2, // Largura da borda dos pontos
+        pointRadius: 6, // Tamanho dos pontos (aumentado)
+        pointHoverBackgroundColor: 'rgba(75, 192, 192, 1)', // Cor dos pontos ao passar o mouse (verde)
+        pointHoverBorderColor: 'rgba(75, 192, 192, 1)', // Cor da borda ao passar o mouse
+        pointHoverBorderWidth: 2, // Largura da borda ao passar o mouse
+        pointHoverRadius: 8, // Tamanho do ponto ao passar o mouse
+        tension: 0.1 // Suavização da linha
+      }]
+    },
+    options: {
+      responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 10
+        }
+      }
+    }
+  })
+}, 0)
 
   extraSection.appendChild(graphDiv)
   viewDiv.appendChild(extraSection)
